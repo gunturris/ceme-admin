@@ -303,12 +303,12 @@ function form_button($forms){
 
 function form_field_display( $form , $label , $bgcolor ="" , $merge=false,$request = false ){
 	 
-	$view  ='
-	 <p>
-		<label>'.$label.'</label>
-		'.$form .'
-		 
-	</p>'; 
+	  
+    $view = '
+    <div class="form-group input-group">
+      <span class="input-group-addon" style="width:180px">'.$label.'</span>
+      '.$form .'
+    </div>';
 	return $view;
 }
 function form_field_display_three( $form , $label ,  $nilai ,$merge = false  ){

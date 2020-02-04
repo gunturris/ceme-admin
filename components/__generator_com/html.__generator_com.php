@@ -346,7 +346,7 @@ return $template;
 }
 
 function generate_files($module_name,  $headers){
-	$path = '/xampp/htdocs/kornea.2.0.1-SuratDinas/components/'.$module_name;
+	$path = __DIR__.'/../'.$module_name;
 	if(file_exists($path)){
 		return false;
 	}

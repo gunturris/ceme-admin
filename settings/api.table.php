@@ -97,49 +97,45 @@ function table_builder($header , $datas ,  $footer_length , $property_table = fa
 	}
 	
 	$view = '
-	<div class="module-table-body">
-	<table width="100%" style="border-top:2px solid;border-bottom:2px solid;" border="0" cellspacing="0" cellpadding="0">'."\n";
+	<div class="table-responsive">
+         <table class="table table-striped table-bordered table-hover" id="dataTables-example"> 
+    
+    '."\n";
 
 	if(! is_array($header) ){
 		return (-2);
 	}	 
-	$view .='<tr>';
-	/*
-	$sort = isset($_GET['sort']) ? $_GET['sort'] : '' ;
-	$keysort = isset($_GET['keysort']) ? $_GET['keysort'] : '' ;
+	$view .='<thead> <tr>';
 	
-	if($sort == 'ASC') $icon_show = '<img src="/icon/s_asc.png" />';
-	elseif($sort == 'DESC') $icon_show = '<img src="/icon/s_desc.png" />';
-	else $icon_show = '';
-	*/
+    
 	foreach($header as $field=>$length){
-		$view .='<th class="headerSortUp" ';
-		//$icon_show_field = ($field == $keysort) ? $icon_show : '' ;
+		$view .='<th ';
+        
 		$icon_show_field = '' ;
 		foreach($length as $th => $value){
 			$view .= $th.'="'.$value.'" ';
 		}
-		//$view .='><a href="javascript:;">'.$field.'</a><span>'.$icon_show_field.'</span></th>';
+        
 		$view .='>'.$field.'</th>';
  	}
-	$view .='</tr><tbody>'."\n";
+	$view .='</tr></thead><tbody>'."\n";
 	 
 	if( $datas ){
 		$view .= $datas."\n";
 	}else{
-		$view .= '<tr>';
+		$view .= ' <tr>';
 		$view .= '<td colspan="'.$footer_length.'" style="height:38px;text-align:center;">No data available</td>';
 		$view .= '</tr>'."\n";
 	}
 	//$view .='<tr><th colspan='.  $footer_length .'>'."\n"; 
 	//$view .='</th></tr>'."\n";
 	$view .='
-	 </tbody></table>';
+	 </tbody></table>
+	</div>';
 	if($footer_content  ){
 		$view .= $footer_content;
 	} 
-	$view .='
-	</div>'."\n";
+	$view .=''."\n";
 	
 	return $view;
 }
@@ -171,7 +167,7 @@ function table_rows($fields , $style =false){
 		foreach($fields as $key=>$values){
 			$n++;
 			
-			$bgrows = ( ($n%2) == 0 ) ? ' ' : ' class="odd"' ;
+			$bgrows = ( ($n%2) == 0 ) ? ' class="even" ' : ' class="odd"' ;
 			/*if($n == $total_rows ){
 				$view .= '<tr>';
 				foreach( $values as $k => $value){
