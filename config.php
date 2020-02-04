@@ -7,19 +7,13 @@
  
 /* KONFIGURASI KONEKSI DATABASE */
 
-if( $_SERVER['HTTP_HOST'] == "localhost"){
+
     ini_set("display_errors", 1 );
-    define( "DATABASE_HOST" , "localhost" ); 
-    define( "DATABASE_USER" , "root" );
-    define( "DATABASE_PASSWORD" , "" );
-    define( "DATABASE_NAME" , "bontanq" );
-    
-}else{ 
-    //define( "DATABASE_HOST" , "db575819624.db.1and1.com" ); 
-    //define( "DATABASE_USER" , "dbo575819624" );
-    //define( "DATABASE_PASSWORD" , "gungun123" );
-    //define( "DATABASE_NAME" , "db575819624" );
-}
+    define( "DATABASE_HOST" , "sql2.freesqldatabase.com" ); 
+    define( "DATABASE_USER" , "sql2290984" );
+    define( "DATABASE_PASSWORD" , "gE8*dY9!" );
+    define( "DATABASE_NAME" , "sql2290984" );
+   
 /* KONFIGURASI PAGING */
 define("PAGING_PERHALAMAN" , 14);
 define("SCROLL_PERHALAMAN" ,  5);
