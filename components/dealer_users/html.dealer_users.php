@@ -154,9 +154,7 @@ function edit_dealer_users($id){
 	$form_username = form_dynamic($username);
 	$view .= form_field_display( $form_username  , "Username"  );
 	
-	
 
-	
 	$password = array(
 			'name'=>'password',
 			'value'=>(isset($_POST['password'])? $_POST['password'] : $fields['password']),

@@ -6,7 +6,7 @@
 <?php 
 $com = isset($_GET['com']) ?   $_GET['com'] : ''; 
 ?>
-    <title>  Binary Admin</title>
+    <title>  Ceme Admin</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="<?php echo my_template_position(); ?>/assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -39,7 +39,7 @@ if(isset($css_code))print $css_code;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Binary admin</a> 
+                <a class="navbar-brand" href="index.html">Ceme admin</a> 
             </div>
   <div style="color: white;
 padding: 15px 50px 5px 50px;
@@ -50,61 +50,100 @@ font-size: 16px;"> Last access : 30 May 2018 &nbsp; <a href="#" class="btn btn-d
                 <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-				<li class="text-center">
-                    <img src="assets/img/find_user.png" class="user-image img-responsive"/>
+				    <li class="text-center">
+                        &nbsp;
+                    <!-- img src="assets/img/find_user.png" class="user-image img-responsive"/ -->
 					</li>
 				
 					
                     <li>
-                        <a  href="index.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
-                    </li>
-                      <li>
-                        <a  href="ui.html"><i class="fa fa-desktop fa-3x"></i> UI Elements</a>
-                    </li>
-                    <li>
-                        <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>
-                    </li>
-						   <li  >
-                        <a  href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
-                    </li>	
-                      <li  >
-                        <a  href="table.html"><i class="fa fa-table fa-3x"></i> Table Examples</a>
-                    </li>
-                    <li  >
-                        <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
-                    </li>				
-					
-					                   
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap fa-3x"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                        <a  href="index.html"><i class="fa fa-dashboard fa-2x"></i> Dashboard<span class="fa arrow"></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Second Level Link</a>
+                                <a href="#">Banks</a>
                             </li>
                             <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-
-                                </ul>
-                               
+                                <a href="#">Users</a>
                             </li>
                         </ul>
-                      </li>  
-                  <li  >
-                        <a class="active-menu"  href="blank.html"><i class="fa fa-square-o fa-3x"></i> Blank Page</a>
-                    </li>	
+                    </li>
+                    <li>
+                        <a  href="index.html"><i class="fa fa-bar-chart-o fa-2x"></i> Players stas<span class="fa arrow"></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Statistic</a>
+                            </li>
+                            <li>
+                                <a href="#">Players</a>
+                            </li>
+                            <li>
+                                <a href="#">Devices</a>
+                            </li>
+                            <li>
+                                <a href="#">Transactions</a>
+                            </li>
+                            <li>
+                                <a href="#">Bots</a>
+                            </li>
+                            <li>
+                                <a href="#">Agents</a>
+                            </li>
+                        </ul>
+                    </li>					
+                    <li>
+                        <a  href="index.html"><i class="fa fa-list-alt fa-2x"></i> Leagues<span class="fa arrow"></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Leagues</a>
+                            </li>
+                            <li>
+                                <a href="#">Venues</a>
+                            </li>
+                        </ul>
+                    </li>			
+                    <li>
+                        <a  href="index.html"><i class="fa fa-anchor fa-2x"></i> Tournaments<span class="fa arrow"></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Tournaments</a>
+                            </li>
+                            <li>
+                                <a href="#">Structure</a>
+                            </li>
+                            <li>
+                                <a href="#">Payout</a>
+                            </li>
+                        </ul>
+                    </li>			
+                    <li>
+                        <a  href="index.html"><i class="fa fa-picture-o fa-2x"></i> Texas Poker Games<span class="fa arrow"></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Games</a>
+                            </li>
+                            <li>
+                                <a href="#">Group</a>
+                            </li>
+                            <li>
+                                <a href="#">Jackpot</a>
+                            </li>
+                        </ul>
+                    </li> 		
+                    <li>
+                        <a  href="index.html"><i class="fa fa-tags fa-2x"></i> Stores<span class="fa arrow"></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Store</a>
+                            </li>
+                            <li>
+                                <a href="#">Gift</a>
+                            </li> 
+                        </ul>
+                    </li> 
+					           
+                    <li>
+                        <a  href="index.html"><i class="fa fa-cog fa-2x"></i> Settings</a> 
+                    </li>  
                 </ul>
                
             </div>
