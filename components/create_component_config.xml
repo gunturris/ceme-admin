@@ -1,0 +1,18 @@
+<component name="bank" title="Data bank">
+    <dbtable key="id">bank</dbtable>
+    <tablefield>dealerId,bankName,rakeTake,playMoneyBank,playMoneyTotalPayout</tablefield>
+    <headers>
+            {Dealer     ->  'width:25%;','text-align:left;'}
+            {Bank name     ->  'width:25%;','text-align:left;'}
+            {Rake Take  ->  'width:10%;','text-align:right;'}
+            {Play Money ->  'width:10%;','text-align:right;'}
+            {Total Payout ->  'width:12%;','text-align:right;'}
+    </headers>
+    <forms>
+        <form name="dealerId" type="textfield">Dealer</form> 
+        <form name="bankName" type="textfield">Bank name</form> 
+        <form name="rakeTake" type="number">Rake take</form> 
+        <form name="playMoneyBank" type="number">Play money</form> 
+        <form name="playMoneyTotalPayout" type="number">Total payout</form> 
+    </forms>
+</component>

@@ -58,11 +58,12 @@ function declare_js_header(){
     return $text;
 } 
 
-function generator_function_list($module_name , $list_table, $dataheaders){
+function generator_function_list($module_name , $db_table, $table_column ,$dataheaders){
     
-    $dataheaders = explode("," , $dataheaders );
+    $tablecolumn = explode("," , $table_column );
     
     $jstext = declare_js_header();
+    $paging_form = declare_paging();
 	$template = "
     function list_{$module_name}(){
     global \$box;
@@ -71,18 +72,19 @@ function generator_function_list($module_name , $list_table, $dataheaders){
 	
 	$template .= "\$headers= array( 
 		";
-	foreach($headers as $key=>$dataheader){ 
-		$template .= "'".$key."' => array( ".$dataheader." ), 
+	foreach($dataheaders as $key=>$dataheader){ 
+		$template .= "'".trim($key)."' => array( ".trim($dataheader)." ), 
 		";
 	}
-	$template .= "
+	$template .= "'act'=>array('width:10%','text-align:center')
 	);\n";
 	$template .= "
 	
 	
-	\$query 	= \"SELECT * FROM {$list_table} \";
+	\$query 	= \"SELECT * FROM {$db_table} \";
 	\$result = my_query(\$query);
 	
+    {$paging_form}
 	
 	\$row = array();
 	while(\$ey = my_fetch_array(\$result)){
@@ -102,8 +104,8 @@ function generator_function_list($module_name , $list_table, $dataheaders){
 		\$row[] = array( 
 		";
 		 
-	foreach($headers as $key=>$dataheader){ 
-		$template .= "'".$key."' => \$ey['{$key}'],  
+	foreach($tablecolumn as  $dataheader){ 
+		$template .= "'".$dataheader."' => \$ey['{$dataheader}'],  
 		";
 	}			
 $template .= "		'op'=> position_text_align( \$edit_button  .\$delete_button , 'right')
@@ -124,13 +126,13 @@ $template .= "		'op'=> position_text_align( \$edit_button  .\$delete_button , 'r
 	return $template;
 }
 
-function generate_function_form(){
+function generate_function_form_submit($module_name , $tablename , $primary_key){
     $template = "
 
 function submit_{$module_name}(\$id){
 	 
 	\$datas = array();";
-$query = "SHOW fields FROM {$module_name}";
+$query = "SHOW fields FROM {$tablename}";
 $result = my_query($query);
 while($row = my_fetch_array($result)){
 
@@ -142,9 +144,9 @@ while($row = my_fetch_array($result)){
 }	
 	$template .= " 
 	if(\$id > 0){
-		return my_update_record( '{$module_name}' , '{$module_name}_id' , \$id , \$datas );
+		return my_update_record( '{$tablename}' , '{$primary_key}' , \$id , \$datas );
 	}
-	return my_insert_record( '{$module_name}' , \$datas );
+	return my_insert_record( '{$tablename}' , \$datas );
 }
 
 function form_{$module_name}_validate(){
@@ -153,6 +155,74 @@ function form_{$module_name}_validate(){
 	";
     return $template;
 }
+
+
+
+function generator_function_edit($module_name ,   $list_table , $primary_key ,$forms){
+	$template = "
+function edit_{$module_name}(\$id){
+	
+	my_set_file_js(
+		array(
+			'assets/jquery/combomulti/jquery.chainedSelects.js',
+			'assets/js/calendar/calendarDateInput.js' 
+		)
+	);
+	\$view = form_header( \"form_{$module_name}\" , \"form_{$module_name}\"  );
+	\$fields = my_get_data_by_id('{$list_table}','{$primary_key}', \$id);
+";
+
+foreach($forms as $label => $row ){ 
+    
+    list($name , $type ) = explode("|" , $row);
+    
+	if( $type == 'textfield' ){
+        $template .= "\n".generate_form_text( $name , $label );
+    }
+    else
+    if( $type == 'textfield' ){
+        
+    }    
+        
+	if( preg_match("/date/i", $row['Type'] ) ){
+		$template .= "\n".generate_form_calendar($row['Field'] , $label);	 
+	
+	}elseif(preg_match("/int/i", $row['Type'] )){
+		$template .= "\n".generate_form_dropdown($row['Field']);
+	
+	}elseif(preg_match("/textarea/i", $row['Type'] )){
+		$template .= "\n".generate_form_textarea($row['Field']);
+	
+	}else{
+		$template .= "\n".generate_form_text($row['Field']);
+	
+	}
+}
+	$template .= "	 
+	\$submit = array(
+		'value' => ( \$id ==0 ? ' Save ' :'  Update  '),
+		'name' => 'simpan', 
+		'type'=>'submit','class'=>'submit-green'
+	);
+	\$form_submit= form_dynamic(\$submit); 
+	
+	\$cancel = array(
+		'value' => ( '  Cancel  '),
+		'name' => 'cancel', 
+		'type'=>'button',
+		'onclick'=>'location.href=\'index.php?com='.\$_GET['com'].'\'',
+		'class'=>'submit-gray'
+	);
+	\$form_cancel = form_dynamic(\$cancel );
+	 
+	\$view .= form_field_display( \$form_submit.' '.\$form_cancel, \"&nbsp;\" , \"<hr />\"  );
+	\$view .= form_footer( );	
+	
+	return  \$view;
+} ";
+return $template;
+}
+
 
 function generate_form_calendar($name){
 	$templates ="
@@ -183,9 +253,9 @@ function generate_form_dropdown($name){
 	while(\$row_{$name} = my_fetch_array(\$result)){
 		\${$name}s[\$row_{$name}['{$name}_id']] = \$row_{$name}['label'];
 	}
-	\$level = array(
+	\${$name} = array(
 		'name'=>'{$name}',
-		'value'=>( isset(\$_POST['{$name}_id']) ? \$_POST['{$name}_id'] : \$fields['{$name}_id']) ,
+		'value'=>( isset(\$_POST['{$name}']) ? \$_POST['{$name}'] : \$fields['{$name}']) ,
 	);
 	\$form_{$name} = form_radiobutton(\${$name} , \${$name}s);
 	\$view .= form_field_display(  \$form_{$name}   , \"".ucfirst($name)."\"    ); 
@@ -193,7 +263,7 @@ function generate_form_dropdown($name){
 	return $templates;
 }
 
-function generate_form_textarea($name){
+function generate_form_textarea($name , $label){
 	$template ="
 	
 	\${$name} = array(
@@ -204,13 +274,13 @@ function generate_form_textarea($name){
 			'rows'=>'5'
 		);
 	\$form_{$name} = form_textarea(\${$name});
-	\$view .= form_field_display( \$form_{$name}  , \"".ucfirst($name)."\"  );
+	\$view .= form_field_display( \$form_{$name}  , \"". ($label)."\"  );
 	
 	";
 	return $template;
 }
 
-function generate_form_text($name){
+function generate_form_text($name, $label){
 	$template ="
 	
 	\${$name} = array(
@@ -221,7 +291,7 @@ function generate_form_text($name){
 			'size'=>'35'
 		);
 	\$form_{$name} = form_dynamic(\${$name});
-	\$view .= form_field_display( \$form_{$name}  , \"".ucfirst($name)."\"  );
+	\$view .= form_field_display( \$form_{$name}  , \"".  $label ."\"  );
 	
 	";
 	return $template;
@@ -232,9 +302,12 @@ function content_text($module_name , $title_component = ""){
 my_component_load('__jsload' , false);
 my_component_load('__paging' , false);  
 my_component_load('{$module_name}' );
+
+require_once(__DIR__ .'/custom.{$module_name}.php');
+
 \$task = isset(\$_GET['task']) ? \$_GET['task'] : ''; 
 \$id = isset( \$_GET['id'] ) ? \$_GET['id']:  0;
-\$modulname = '{$title_component}}';
+\$modulname = '{$title_component}';
 
 if(\$_SERVER['REQUEST_METHOD'] == \"POST\" ):
  	switch(\$task){
