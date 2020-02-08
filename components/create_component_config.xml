@@ -1,25 +1,24 @@
-<component name="players" title="Data players">
-    <dbtable key="dealerId">players</dbtable>
-    <tablefield>dealerId,username,email,rank,bankName,bankAccount,transferLimit,lastlogin</tablefield>
+<component name="league_venues" title="Data venues">
+    <dbtable key="id">league_venues</dbtable>
+    <tablefield>venueName,address,attendFeeChips,attenFeeDollars,awardChips,awardGold,venueType</tablefield>
     <headers>
-            {Dealer     ->  'width:20%;','text-align:left;'}
-            {Username     ->  'width:15%;','text-align:center;'}
-            {Email  ->  'width:15%;','text-align:left;'}
-            {Rank  ->  'width:5%;','text-align:left;'}
-            {Bank name ->  'width:10%;','text-align:right;'}
-            {Bank acc-no ->  'width:10%;','text-align:left;'}
-            {Transfer limit ->  'width:15%;','text-align:right;'}
-            {Last login ->  'width:15%;','text-align:right;'}
+            {Venue name     ->  'width:20%;','text-align:left;'}
+            {Address     ->  'width:35%;','text-align:center;'}
+            {Fee chip  ->  'width:5%;','text-align:left;'}
+            {Fee dollars  ->  'width:5%;','text-align:left;'}
+            {Award chips ->  'width:10%;','text-align:right;'}
+            {Award gold ->  'width:10%;','text-align:left;'}
+            {Venue type ->  'width:5%;','text-align:right;'} 
     </headers>
     <forms>
         <!-- type only : textfield,number,dropdown,textarea,calendar-->
-        <form name="dealerId" type="textfield">Dealer</form> 
-        <form name="username" type="calendar">Username</form> 
-        <form name="email" type="textfield">Email</form> 
-        <form name="rank" type="textfield">Rangking</form> 
+        <form name="venueName" type="textfield">Venue of league</form> 
+        <form name="address" type="textarea">Address</form> 
+        <form name="attendFeeChips" type="textfield">Fee chips</form> 
+        <form name="attenFeeDollars" type="textfield">Fee dollars</form> 
         
-        <form name="bankName"  type="textfield">Bank name</form> 
-        <form name="bankAccount" type="textfield">Account number</form> 
-        <form name="transferLimit" type="number">Transfer limit </form>  
+        <form name="awardChips"  type="textfield">Award chip</form> 
+        <form name="awardGold" type="textfield">Award gold</form> 
+        <form name="venueType" type="textfield">Type of venue </form>   
     </forms>
 </component>

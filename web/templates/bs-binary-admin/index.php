@@ -71,7 +71,7 @@ font-size: 16px;"> Last access : 30 May 2018 &nbsp; <a href="#" class="btn btn-d
                                 <a href="index.php?com=bank">Banks</a>
                             </li>
                             <li>
-                                <a href="index.php?com=dealer">Users</a>
+                                <a href="index.php?com=dealer_users">Users</a>
                             </li>
                         </ul>
                     </li>
@@ -102,10 +102,10 @@ font-size: 16px;"> Last access : 30 May 2018 &nbsp; <a href="#" class="btn btn-d
                         <a  href="index.html"><i class="fa fa-list-alt fa-2x"></i> Leagues<span class="fa arrow"></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Leagues</a>
+                                <a href="index.php?com=leagues">Leagues</a>
                             </li>
                             <li>
-                                <a href="#">Venues</a>
+                                <a href="index.php?com=league_venues">Venues</a>
                             </li>
                         </ul>
                     </li>			

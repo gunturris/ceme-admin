@@ -76,7 +76,7 @@ function generator_function_list($module_name , $db_table, $table_column ,$datah
 		$template .= "'".trim($key)."' => array( ".trim($dataheader)." ), 
 		";
 	}
-	$template .= "'act'=>array('width:10%','text-align:center')
+	$template .= "'act'=>array('width:5%','text-align:center')
 	);\n";
 	$template .= "
 	
