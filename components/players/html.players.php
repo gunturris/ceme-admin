@@ -84,16 +84,17 @@
 		);
 		$delete_button = button_icon( 'b_drop.png' , $deleteproperty  );
 
+        $dealer = my_get_data_by_id('dealers' , 'dealerId' ,  $ey['dealerId']);
 		$row[] = array( 
-		'dealerId' => $ey['dealerId'],  
-		'username' => $ey['username'],  
-		'email' => $ey['email'],  
-		'rank' => 0,//$ey['rank'],  
-		'bankName' => $ey['bankName'],  
-		'bankAccount' => $ey['bankAccount'],  
-		'transferLimit' => $ey['transferLimit'],  
-		'lastlogin' => $ey['lastlogin'],  
-				'op'=> position_text_align( $edit_button  .$delete_button , 'right')
+            'dealerId' =>$dealer['busname'],  
+            'username' => $ey['username'],  
+            'email' => $ey['email'],  
+            'rank' => 0,//$ey['rank'],  
+            'bankName' => $ey['bankName'],  
+            'bankAccount' => $ey['bankAccount'],  
+            'transferLimit' => position_text_align(  rp_format($ey['transferLimit']) , 'right'),  
+            'lastlogin' => date('Y-m-d' , $ey['lastlogin']),  
+            'op'=> position_text_align( $edit_button  .$delete_button , 'right')
 		);
 	}
 	
@@ -102,9 +103,9 @@
 		'<input class="submit-green" type="button" value="Tambah data" onclick="javascript:location.href=\'index.php?com='.$_GET['com'].'&task=edit\'"/>',
 		'<input class="submit-green" type="button" value="Proses" />'
 	);
-	$box = header_box( 'Data players' , $navigasi );
+	$box = header_box( '' , $navigasi );
 	$paging = $kgPagerOBJ ->showPaging();
-	return table_builder($headers , $datas ,  4 , false , $paging  ); 
+	return table_builder($headers , $datas , 9, false , $paging  ); 
 }
 
 	
@@ -117,36 +118,34 @@ function edit_players($id){
 		)
 	);
 	$view = form_header( "form_players" , "form_players"  );
-	$fields = my_get_data_by_id('players','dealerId', $id);
+	$fields = my_get_data_by_id('players','ID', $id);
 
 
-	
+	$dealers = array();
+    $query_dealers = "SELECT * FROM dealers";
+    $resdealers = my_query($query_dealers);
+    while( $row_dealers = my_fetch_array($resdealers) ){
+        $dealers[$row_dealers['dealerId']] = $row_dealers['busname'];
+    }
+    
 	$dealerId = array(
 			'name'=>'dealerId',
 			'value'=>(isset($_POST['dealerId'])? $_POST['dealerId'] : $fields['dealerId']),
-			'id'=>'dealerId',
-			'type'=>'textfield',
-			'size'=>'35'
+			'id'=>'dealerId', 
 		);
-	$form_dealerId = form_dynamic($dealerId);
+	$form_dealerId = form_dropdown($dealerId , $dealers);
 	$view .= form_field_display( $form_dealerId  , "Dealer"  );
 	
 	
-
-	$fusername = date('Y-m-d');
-	if($fields){
-		list($yyyyusername , $mmusername, $ddusername ) = explode("-" ,$fields['username'] );
-		$fusername = $ddusername.'-'.$mmusername.'-'.$yyyyusername;
-	}
-	
+ 
 	$username = array(
 			'name'=>'username',
-			'value'=>(isset($_POST['username'])? $_POST['username'] : $fusername),
+			'value'=>(isset($_POST['username'])? $_POST['username'] :  $fields['username']),
 			'id'=>'username',
 			'type'=>'textfield',
 			'size'=>'45'
 		);
-	$form_username = form_calendar($username);
+	$form_username = form_dynamic($username);
 	$view .= form_field_display( $form_username  , "Username" );
 	
 
@@ -166,7 +165,7 @@ function edit_players($id){
 	
 	$rank = array(
 			'name'=>'rank',
-			'value'=>(isset($_POST['rank'])? $_POST['rank'] : $fields['rank']),
+			'value'=>(isset($_POST['rank'])? $_POST['rank'] : 'TIDAK ADA FIELD'),
 			'id'=>'rank',
 			'type'=>'textfield',
 			'size'=>'35'
@@ -238,11 +237,11 @@ function edit_players($id){
 
 function submit_players($id){
 	 
-	$datas = array(); $datas['ID']	=  my_type_data_str($_POST['ID']);
+	$datas = array(); 
 	 $datas['dealerId']	=  my_type_data_str($_POST['dealerId']);
 	 $datas['username']	=  my_type_data_str($_POST['username']);
 	 $datas['email']	=  my_type_data_str($_POST['email']);
-	 $datas['password']	=  my_type_data_str($_POST['password']);
+	/* $datas['password']	=  my_type_data_str($_POST['password']);
 	 $datas['avatar']	=  my_type_data_str($_POST['avatar']);
 	 $datas['datecreated']	=  my_type_data_str($_POST['datecreated']);
 	 $datas['lastlogin']	=  my_type_data_str($_POST['lastlogin']);
@@ -264,23 +263,27 @@ function submit_players($id){
 	 $datas['bot']	=  my_type_data_str($_POST['bot']);
 	 $datas['facebookId']	=  my_type_data_str($_POST['facebookId']);
 	 $datas['walletAddress']	=  my_type_data_str($_POST['walletAddress']);
+     */
 	 $datas['bankName']	=  my_type_data_str($_POST['bankName']);
-	 $datas['rekening']	=  my_type_data_str($_POST['rekening']);
 	 $datas['bankAccount']	=  my_type_data_str($_POST['bankAccount']);
+	 $datas['transferLimit']	=  my_type_data_str($_POST['transferLimit']);
+    /*
 	 $datas['ts']	=  my_type_data_str($_POST['ts']);
+	 $datas['rekening']	=  my_type_data_str($_POST['rekening']);
 	 $datas['securePassword']	=  my_type_data_str($_POST['securePassword']);
 	 $datas['language']	=  my_type_data_str($_POST['language']);
-	 $datas['transferLimit']	=  my_type_data_str($_POST['transferLimit']);
 	 $datas['leagueId']	=  my_type_data_str($_POST['leagueId']);
 	 $datas['fbAccessToken']	=  my_type_data_str($_POST['fbAccessToken']);
 	 $datas['displayName']	=  my_type_data_str($_POST['displayName']);
 	 $datas['vip']	=  my_type_data_str($_POST['vip']);
 	 $datas['agent']	=  my_type_data_str($_POST['agent']);
 	 $datas['membercard']	=  my_type_data_str($_POST['membercard']);
-	 
+	 */
 	if($id > 0){
-		return my_update_record( 'players' , 'dealerId' , $id , $datas );
+		return my_update_record( 'players' , 'ID' , $id , $datas );
 	}
+    $id = mt_rand(10000000 , 99999999);
+    $datas['ID']	=  my_type_data_int($id);
 	return my_insert_record( 'players' , $datas );
 }
 

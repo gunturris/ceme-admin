@@ -4,7 +4,7 @@ my_component_load('__paging' , false);
 my_component_load('dealer_users' );
 $task = isset($_GET['task']) ? $_GET['task'] : ''; 
 $id = isset( $_GET['id'] ) ? $_GET['id']:  0;
-$modulname = 'Admin _BN_ Konfigurasi Data _BN_ dealer_users';
+$modulname = ' Dealer users';
 
 if($_SERVER['REQUEST_METHOD'] == "POST" ):
  	switch($task){

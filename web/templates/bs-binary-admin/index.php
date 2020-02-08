@@ -113,13 +113,13 @@ font-size: 16px;"> Last access : 30 May 2018 &nbsp; <a href="#" class="btn btn-d
                         <a  href="index.html"><i class="fa fa-anchor fa-2x"></i> Tournaments<span class="fa arrow"></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Tournaments</a>
+                                <a href="index.php?com=tournaments">Tournaments</a>
                             </li>
                             <li>
-                                <a href="#">Structure</a>
+                                <a href="index.php?com=tournament_structure">Structure</a>
                             </li>
                             <li>
-                                <a href="#">Payout</a>
+                                <a href="index.php?com=tournament_payout">Payout</a>
                             </li>
                         </ul>
                     </li>			
@@ -161,13 +161,11 @@ font-size: 16px;"> Last access : 30 May 2018 &nbsp; <a href="#" class="btn btn-d
         <div id="page-wrapper" >
             <div id="page-inner">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                      <h4><?php echo $sidebar; ?></h4>  
                     </div>
-                    <div class="col-md-6" style="text-align:right;">
-                      <?php echo (isset($box) ? $box : ''); ?>  
-                    </div>
-                </div>
+                </div> 
+                <?php echo (isset($box) ? $box : ''); ?> 
                 <div class="row">
                     <div class="col-md-12">
                        <?php echo $content; ?>

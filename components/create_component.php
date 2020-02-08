@@ -34,15 +34,15 @@ foreach( $xml->forms[0]->form as $formz){
     $form_text .= "\t  {$label} \t> ".  '(type: '.$type.' ; fieldname: '.$name.' )'."\n";
 }
 
-echo "Nama component : {$component_name}\n";
+echo "Nama component\t\t: {$component_name}\n";
 
-echo "Title component : {$title_name}\n"; 
+echo "Title component\t\t: {$title_name}\n"; 
 
-echo "Database table : {$table_name}\n" ; 
+echo "Database table\t: {$table_name}\n" ; 
 
-echo "Database table column : {$table_column}\n" ;
+echo "Database table column\t: {$table_column}\n" ;
 
-echo "Database table primary key : {$primary_key}\n" ; 
+echo "Database table primary key\t: {$primary_key}\n" ; 
 
 echo "Header column : {$headers}\n\n" ;
 

@@ -94,7 +94,7 @@ global $box;
 		'<input class="submit-green" type="button" value="Tambah data" onclick="javascript:location.href=\'index.php?com='.$_GET['com'].'&task=edit\'"/>',
 		'<input class="submit-green" type="button" value="Proses" />'
 	);
-	$box = header_box( 'Data dealer_users' , $navigasi );
+	$box = header_box( ' ' , $navigasi );
 	$paging = $kgPagerOBJ ->showPaging();
 	return table_builder($headers , $datas ,  4 , false , $paging  ); 
 }

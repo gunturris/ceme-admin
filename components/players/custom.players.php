@@ -9,3 +9,4 @@ function players_total($criteria = false){
     }
     return 0;
 }
+ 

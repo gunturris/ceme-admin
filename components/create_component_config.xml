@@ -1,24 +1,19 @@
-<component name="league_venues" title="Data venues">
-    <dbtable key="id">league_venues</dbtable>
-    <tablefield>venueName,address,attendFeeChips,attenFeeDollars,awardChips,awardGold,venueType</tablefield>
+<component name="texas_groups" title="Texas groups">
+    <dbtable key="id">texas_groups</dbtable>
+    <tablefield>dealerId,name,tablelow,tablelimit</tablefield>
     <headers>
-            {Venue name     ->  'width:20%;','text-align:left;'}
-            {Address     ->  'width:35%;','text-align:center;'}
-            {Fee chip  ->  'width:5%;','text-align:left;'}
-            {Fee dollars  ->  'width:5%;','text-align:left;'}
-            {Award chips ->  'width:10%;','text-align:right;'}
-            {Award gold ->  'width:10%;','text-align:left;'}
-            {Venue type ->  'width:5%;','text-align:right;'} 
+            {DealerID         ->  'style'=>'width:15%;text-align:left;'}  
+            {Group name         ->  'style'=>'width:25%;text-align:left;'}  
+            {Table low         ->  'style'=>'width:25%;text-align:left;'}  
+            {Table limit         ->  'style'=>'width:10%;text-align:left;'}  
     </headers>
     <forms>
         <!-- type only : textfield,number,dropdown,textarea,calendar-->
-        <form name="venueName" type="textfield">Venue of league</form> 
-        <form name="address" type="textarea">Address</form> 
-        <form name="attendFeeChips" type="textfield">Fee chips</form> 
-        <form name="attenFeeDollars" type="textfield">Fee dollars</form> 
+        <form name="dealerId" type="textfield">DealerID</form> 
+        <form name="name" type="textfield">Group name</form>  
         
-        <form name="awardChips"  type="textfield">Award chip</form> 
-        <form name="awardGold" type="textfield">Award gold</form> 
-        <form name="venueType" type="textfield">Type of venue </form>   
+        <form name="tablelow" type="textfield">Table low</form>   
+        <form name="tablelimit" type="textfield">Table limit</form> 
+         
     </forms>
 </component>

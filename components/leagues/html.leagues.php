@@ -13,15 +13,15 @@
         ');	
     
 	$headers= array( 
-		'Name' => array( 'width:20%;','text-align:left;' ), 
-		'Fee chips' => array( 'width:15%;','text-align:center;' ), 
-		'Fee gold' => array( 'width:15%;','text-align:left;' ), 
-		'Fee dollars' => array( 'width:5%;','text-align:left;' ), 
-		'Min. Level' => array( 'width:10%;','text-align:right;' ), 
-		'League type' => array( 'width:10%;','text-align:left;' ), 
-		'Point' => array( 'width:5%;','text-align:right;' ), 
-		'Players' => array( 'width:15%;','text-align:right;' ), 
-		'act'=>array('width:5%','text-align:center')
+		'Name'        => array( 'style'=> 'width:20%; text-align:left;' ), 
+		'Fee chips'   => array( 'style'=> 'width:15%; text-align:center;' ), 
+		'Fee gold'    => array( 'style'=>  'width:15%; text-align:left;' ), 
+		'Fee dollars' => array( 'style'=> 'width:5%; text-align:left;' ), 
+		'Min. Level'  => array( 'style'=> 'width:10%; text-align:right;' ), 
+		'League type' => array( 'style'=> 'width:10%; text-align:left;' ), 
+		'Point'   => array( 'style'=> 'width:5%; text-align:right;' ), 
+		'Players' => array( 'style'=> 'width:15%; text-align:right;' ), 
+		'act'     =>array('style'=> 'width:5% text-align:center')
 	);
 
 	
@@ -85,15 +85,15 @@
 		$delete_button = button_icon( 'b_drop.png' , $deleteproperty  );
 
 		$row[] = array( 
-		'leagueName' => $ey['leagueName'],  
-		'joinFeeChips' => $ey['joinFeeChips'],  
-		'joinFeeGold' => $ey['joinFeeGold'],  
-		'joinFeeDollars' => $ey['joinFeeDollars'],  
-		'minLevel' => $ey['minLevel'],  
-		'leagueType' => $ey['leagueType'],  
-		'point' => $ey['points'],  
-		'players' => $ey['players'],  
-				'op'=> position_text_align( $edit_button  .$delete_button , 'right')
+            'leagueName' => $ey['leagueName'],  
+            'joinFeeChips' => $ey['joinFeeChips'],  
+            'joinFeeGold' => $ey['joinFeeGold'],  
+            'joinFeeDollars' => $ey['joinFeeDollars'],  
+            'minLevel' => $ey['minLevel'],  
+            'leagueType' => $ey['leagueType'],  
+            'point' => $ey['points'],  
+            'players' => $ey['players'],  
+			'op'=> position_text_align( $edit_button  .$delete_button , 'right')
 		);
 	}
 	
@@ -102,7 +102,7 @@
 		'<input class="submit-green" type="button" value="Tambah data" onclick="javascript:location.href=\'index.php?com='.$_GET['com'].'&task=edit\'"/>',
 		'<input class="submit-green" type="button" value="Proses" />'
 	);
-	$box = header_box( 'Data leagues' , $navigasi );
+	$box = header_box( ' ' , $navigasi );
 	$paging = $kgPagerOBJ ->showPaging();
 	return table_builder($headers , $datas ,  4 , false , $paging  ); 
 }
@@ -248,7 +248,7 @@ function edit_leagues($id){
 function submit_leagues($id){
 	 
 	$datas = array();
-    $datas['id']	=  my_type_data_str($_POST['id']);
+     
 	 $datas['dealerId']	=  my_type_data_str($_POST['dealerId']);
 	 $datas['leagueName']	=  my_type_data_str($_POST['leagueName']);
 	 $datas['joinFeeChips']	=  my_type_data_str($_POST['joinFeeChips']);

@@ -286,6 +286,7 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+    margin: 3px;
 }
 a {
   color: #428bca;
@@ -1739,6 +1740,7 @@ input[type="date"] {
 }
 .form-group {
   margin-bottom: 15px;
+  width: 100%;
 }
 .radio,
 .checkbox {
@@ -3297,6 +3299,10 @@ input[type="button"].btn-block {
   position: relative;
   display: table;
   border-collapse: separate;
+ border: 2px solid #c5caca;
+ min-height: 22px;    
+     border-radius: 4px;
+    background-color:floralwhite;
 }
 .input-group[class*="col-"] {
   float: none;
@@ -3378,9 +3384,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   font-weight: normal;
   line-height: 1;
   color: #555;
-  text-align: center;
+  text-align: left;
   background-color: #eee;
-  border: 1px solid #ccc;
+  /*border: 1px solid #ccc;*/
   border-radius: 4px;
 }
 .input-group-addon.input-sm {
