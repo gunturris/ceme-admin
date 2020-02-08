@@ -1,18 +1,25 @@
-<component name="bank" title="Data bank">
-    <dbtable key="id">bank</dbtable>
-    <tablefield>dealerId,bankName,rakeTake,playMoneyBank,playMoneyTotalPayout</tablefield>
+<component name="players" title="Data players">
+    <dbtable key="dealerId">players</dbtable>
+    <tablefield>dealerId,username,email,rank,bankName,bankAccount,transferLimit,lastlogin</tablefield>
     <headers>
-            {Dealer     ->  'width:25%;','text-align:left;'}
-            {Bank name     ->  'width:25%;','text-align:left;'}
-            {Rake Take  ->  'width:10%;','text-align:right;'}
-            {Play Money ->  'width:10%;','text-align:right;'}
-            {Total Payout ->  'width:12%;','text-align:right;'}
+            {Dealer     ->  'width:20%;','text-align:left;'}
+            {Username     ->  'width:15%;','text-align:center;'}
+            {Email  ->  'width:15%;','text-align:left;'}
+            {Rank  ->  'width:5%;','text-align:left;'}
+            {Bank name ->  'width:10%;','text-align:right;'}
+            {Bank acc-no ->  'width:10%;','text-align:left;'}
+            {Transfer limit ->  'width:15%;','text-align:right;'}
+            {Last login ->  'width:15%;','text-align:right;'}
     </headers>
     <forms>
+        <!-- type only : textfield,number,dropdown,textarea,calendar-->
         <form name="dealerId" type="textfield">Dealer</form> 
-        <form name="bankName" type="textfield">Bank name</form> 
-        <form name="rakeTake" type="number">Rake take</form> 
-        <form name="playMoneyBank" type="number">Play money</form> 
-        <form name="playMoneyTotalPayout" type="number">Total payout</form> 
+        <form name="username" type="calendar">Username</form> 
+        <form name="email" type="textfield">Email</form> 
+        <form name="rank" type="textfield">Rangking</form> 
+        
+        <form name="bankName"  type="textfield">Bank name</form> 
+        <form name="bankAccount" type="textfield">Account number</form> 
+        <form name="transferLimit" type="number">Transfer limit </form>  
     </forms>
 </component>

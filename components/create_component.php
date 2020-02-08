@@ -47,9 +47,7 @@ echo "Database table primary key : {$primary_key}\n" ;
 echo "Header column : {$headers}\n\n" ;
 
 echo "Form fields : {$form_text}\n\n" ; 
-
-exit;
-
+ 
 
 generate_main($component_name , $title_name );
 print("Main file generated ...\n");

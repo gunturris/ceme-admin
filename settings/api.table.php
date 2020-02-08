@@ -143,7 +143,7 @@ function table_builder($header , $datas ,  $footer_length , $property_table = fa
 function header_box( $label , $navigasi ){
 	$view = '
 	<div class="box-head">
-			'.$label.'
+			 &nbsp;
 			<div class="float-right">';
 		foreach($navigasi as $button){
 			$view .= $button;

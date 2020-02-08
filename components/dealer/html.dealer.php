@@ -1,6 +1,6 @@
 <?php
 
-    function list_bank(){
+    function list_dealer(){
     global $box;
 	my_set_code_js('
 		function confirmDelete(id){
@@ -13,17 +13,19 @@
         ');	
     
 	$headers= array( 
-		'Dealer' => array( 'width:25%;','text-align:left;' ), 
-		'Bank name' => array( 'width:25%;','text-align:left;' ), 
-		'Rake Take' => array( 'width:10%;','text-align:right;' ), 
-		'Play Money' => array( 'width:10%;','text-align:right;' ), 
-		'Total Payout' => array( 'width:12%;','text-align:right;' ), 
+		'Bussines name' => array( 'width:25%;','text-align:left;' ), 
+		'Join date' => array( 'width:15%;','text-align:center;' ), 
+		'City' => array( 'width:10%;','text-align:left;' ), 
+		'Bank name' => array( 'width:10%;','text-align:right;' ), 
+		'Bank acc-no' => array( 'width:10%;','text-align:left;' ), 
+		'Phone' => array( 'width:10%;','text-align:right;' ), 
+		'Last login' => array( 'width:10%;','text-align:right;' ), 
 		'act'=>array('width:10%','text-align:center')
 	);
 
 	
 	
-	$query 	= "SELECT * FROM bank ";
+	$query 	= "SELECT * FROM dealers ";
 	$result = my_query($query);
 	
      
@@ -70,23 +72,25 @@
 	while($ey = my_fetch_array($result)){
 		$i++;
 		$editproperty = array(
-				'href'=>'index.php?com='.$_GET['com'].'&task=edit&id=' . $ey['id'] , 
+				'href'=>'index.php?com='.$_GET['com'].'&task=edit&id=' . $ey['dealerId'] , 
 				'title'=>'Edit'
 		);	
 		$edit_button = button_icon( 'b_edit.png' , $editproperty  );
 
 		$deleteproperty = array(
-			'href'=>'javascript:confirmDelete('.$ey['id'].');',
+			'href'=>'javascript:confirmDelete('.$ey['dealerId'].');',
 			'title'=>'Delete', 
 		);
 		$delete_button = button_icon( 'b_drop.png' , $deleteproperty  );
 
 		$row[] = array( 
-		'dealerId' => $ey['dealerId'],  
-		'bankName' => $ey['bankName'],  
-		'rakeTake' => $ey['rakeTake'],  
-		'playMoneyBank' => $ey['playMoneyBank'],  
-		'playMoneyTotalPayout' => $ey['playMoneyTotalPayout'],  
+            'busname' => $ey['busname'],  
+            'datejoined' => $ey['datejoined'],  
+            'city' => $ey['city'],  
+            'bankName' => $ey['bankName'],  
+            'accountNumber' => $ey['accountNumber'],  
+            'phone' => $ey['phone'],  
+            'lastlogin' => $ey['lastlogin'],  
 				'op'=> position_text_align( $edit_button  .$delete_button , 'right')
 		);
 	}
@@ -96,13 +100,13 @@
 		'<input class="submit-green" type="button" value="Tambah data" onclick="javascript:location.href=\'index.php?com='.$_GET['com'].'&task=edit\'"/>',
 		'<input class="submit-green" type="button" value="Proses" />'
 	);
-	$box = header_box( 'Data bank' , $navigasi );
+	$box = header_box( 'Data dealer' , $navigasi );
 	$paging = $kgPagerOBJ ->showPaging();
 	return table_builder($headers , $datas ,  4 , false , $paging  ); 
 }
 
 	
-function edit_bank($id){
+function edit_dealer($id){
 	
 	my_set_file_js(
 		array(
@@ -110,20 +114,49 @@ function edit_bank($id){
 			'assets/js/calendar/calendarDateInput.js' 
 		)
 	);
-	$view = form_header( "form_bank" , "form_bank"  );
-	$fields = my_get_data_by_id('bank','id', $id);
+	$view = form_header( "form_dealer" , "form_dealer"  );
+	$fields = my_get_data_by_id('dealers','dealerId', $id);
 
 
 	
-	$dealerId = array(
-			'name'=>'dealerId',
-			'value'=>(isset($_POST['dealerId'])? $_POST['dealerId'] : $fields['dealerId']),
-			'id'=>'dealerId',
+	$busname = array(
+			'name'=>'busname',
+			'value'=>(isset($_POST['busname'])? $_POST['busname'] : $fields['busname']),
+			'id'=>'busname',
 			'type'=>'textfield',
 			'size'=>'35'
 		);
-	$form_dealerId = form_dynamic($dealerId);
-	$view .= form_field_display( $form_dealerId  , "Dealer"  );
+	$form_busname = form_dynamic($busname);
+	$view .= form_field_display( $form_busname  , "Bussines name"  );
+	
+	
+
+	$fdatejoined = date('Y-m-d');
+	if($fields){
+		 $fdatejoined = date('Y-m-d' , strtotime($fields['datejoined']) );
+	}
+	
+	$datejoined = array(
+			'name'=>'datejoined',
+			'value'=>(isset($_POST['datejoined'])? $_POST['datejoined'] : $fdatejoined),
+			'id'=>'datejoined',
+			'type'=>'textfield',
+			'size'=>'45'
+		);
+	$form_datejoined = form_calendar($datejoined);
+	$view .= form_field_display( $form_datejoined  , "Joined date" );
+	
+
+	
+	$city = array(
+			'name'=>'city',
+			'value'=>(isset($_POST['city'])? $_POST['city'] : $fields['city']),
+			'id'=>'city',
+			'type'=>'textfield',
+			'size'=>'35'
+		);
+	$form_city = form_dynamic($city);
+	$view .= form_field_display( $form_city  , "City"  );
 	
 	
 
@@ -141,41 +174,28 @@ function edit_bank($id){
 	
 
 	
-	$rakeTake = array(
-			'name'=>'rakeTake',
-			'value'=>(isset($_POST['rakeTake'])? $_POST['rakeTake'] : $fields['rakeTake']),
-			'id'=>'rakeTake',
+	$accountNumber = array(
+			'name'=>'accountNumber',
+			'value'=>(isset($_POST['accountNumber'])? $_POST['accountNumber'] : $fields['accountNumber']),
+			'id'=>'accountNumber',
 			'type'=>'textfield',
 			'size'=>'35'
 		);
-	$form_rakeTake = form_dynamic($rakeTake);
-	$view .= form_field_display( $form_rakeTake  , "Rake take"  );
+	$form_accountNumber = form_dynamic($accountNumber);
+	$view .= form_field_display( $form_accountNumber  , "Account number"  );
 	
 	
 
 	
-	$playMoneyBank = array(
-			'name'=>'playMoneyBank',
-			'value'=>(isset($_POST['playMoneyBank'])? $_POST['playMoneyBank'] : $fields['playMoneyBank']),
-			'id'=>'playMoneyBank',
+	$phone = array(
+			'name'=>'phone',
+			'value'=>(isset($_POST['phone'])? $_POST['phone'] : $fields['phone']),
+			'id'=>'phone',
 			'type'=>'textfield',
 			'size'=>'35'
 		);
-	$form_playMoneyBank = form_dynamic($playMoneyBank);
-	$view .= form_field_display( $form_playMoneyBank  , "Play money"  );
-	
-	
-
-	
-	$playMoneyTotalPayout = array(
-			'name'=>'playMoneyTotalPayout',
-			'value'=>(isset($_POST['playMoneyTotalPayout'])? $_POST['playMoneyTotalPayout'] : $fields['playMoneyTotalPayout']),
-			'id'=>'playMoneyTotalPayout',
-			'type'=>'textfield',
-			'size'=>'35'
-		);
-	$form_playMoneyTotalPayout = form_dynamic($playMoneyTotalPayout);
-	$view .= form_field_display( $form_playMoneyTotalPayout  , "Total payout"  );
+	$form_phone = form_dynamic($phone);
+	$view .= form_field_display( $form_phone  , "Phone number"  );
 	
 		 
 	$submit = array(
@@ -200,7 +220,7 @@ function edit_bank($id){
 	return  $view;
 } 
 
-function submit_bank($id){
+function submit_dealer($id){
 	 
 	$datas = array(); $datas['id']	=  my_type_data_str($_POST['id']);
 	 $datas['dealerId']	=  my_type_data_str($_POST['dealerId']);
@@ -238,12 +258,12 @@ function submit_bank($id){
 	 $datas['dailyAwardChipsVIP']	=  my_type_data_str($_POST['dailyAwardChipsVIP']);
 	 
 	if($id > 0){
-		return my_update_record( 'bank' , 'id' , $id , $datas );
+		return my_update_record( 'bank' , 'dealerId' , $id , $datas );
 	}
 	return my_insert_record( 'bank' , $datas );
 }
 
-function form_bank_validate(){
+function form_dealer_validate(){
 	return false;
 }
 	

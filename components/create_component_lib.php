@@ -159,6 +159,8 @@ function form_{$module_name}_validate(){
 
 
 function generator_function_edit($module_name ,   $list_table , $primary_key ,$forms){
+if( ! is_array($forms))return false;
+    
 	$template = "
 function edit_{$module_name}(\$id){
 	
@@ -174,29 +176,30 @@ function edit_{$module_name}(\$id){
 
 foreach($forms as $label => $row ){ 
     
-    list($name , $type ) = explode("|" , $row);
+    list(  $type ,$name ) = explode("|" , $row);
     
-	if( $type == 'textfield' ){
+    
+	if( $type == 'textfield'  ){
         $template .= "\n".generate_form_text( $name , $label );
     }
     else
-    if( $type == 'textfield' ){
-        
-    }    
-        
-	if( preg_match("/date/i", $row['Type'] ) ){
-		$template .= "\n".generate_form_calendar($row['Field'] , $label);	 
+	if( $type == 'number'  ){
+        $template .= "\n".generate_form_text( $name , $label );
+    }
+    else
+    if( $type == 'calendar' ){
+        $template .= "\n".generate_form_calendar( $name , $label);
+    }
+    else
+    if( $type == 'dropdown' ){    
+		$template .= "\n".generate_form_dropdown($name , $label);
+    
+    }
+    if( $type == 'textarea' ){    
+        $template .= "\n".generate_form_textarea($name , $label);
+    }
 	
-	}elseif(preg_match("/int/i", $row['Type'] )){
-		$template .= "\n".generate_form_dropdown($row['Field']);
-	
-	}elseif(preg_match("/textarea/i", $row['Type'] )){
-		$template .= "\n".generate_form_textarea($row['Field']);
-	
-	}else{
-		$template .= "\n".generate_form_text($row['Field']);
-	
-	}
+      
 }
 	$template .= "	 
 	\$submit = array(
@@ -224,7 +227,7 @@ return $template;
 }
 
 
-function generate_form_calendar($name){
+function generate_form_calendar($name , $label){
 	$templates ="
 	\$f{$name} = date('Y-m-d');
 	if(\$fields){
@@ -240,12 +243,12 @@ function generate_form_calendar($name){
 			'size'=>'45'
 		);
 	\$form_{$name} = form_calendar(\${$name});
-	\$view .= form_field_display( \$form_{$name}  , \"".ucfirst($name)."\" );
+	\$view .= form_field_display( \$form_{$name}  , \"". $label."\" );
 	";
 	return $templates;
 }
 
-function generate_form_dropdown($name){
+function generate_form_dropdown($name , $label ){
 	$templates ="
 	\${$name}s =  array( );
 	\$query = \"SELECT {$name}_id , label FROM ".str_replace("_id","" ,$name)."\";	
@@ -258,7 +261,7 @@ function generate_form_dropdown($name){
 		'value'=>( isset(\$_POST['{$name}']) ? \$_POST['{$name}'] : \$fields['{$name}']) ,
 	);
 	\$form_{$name} = form_radiobutton(\${$name} , \${$name}s);
-	\$view .= form_field_display(  \$form_{$name}   , \"".ucfirst($name)."\"    ); 
+	\$view .= form_field_display(  \$form_{$name}   , \"". ($label)."\"    ); 
 	";
 	return $templates;
 }

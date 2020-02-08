@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+global $box;
+?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
@@ -16,6 +18,12 @@ $com = isset($_GET['com']) ?   $_GET['com'] : '';
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
  
+    <!-- JQUERY SCRIPTS -->
+    <script src="<?php echo my_template_position(); ?>/assets/js/jquery-1.10.2.js"></script>
+<?php  
+ 
+if(isset($js_file))print $js_file;
+?>
 
 <?php  
 //if(defined('JS_LIST'))print JS_LIST; 
@@ -60,10 +68,10 @@ font-size: 16px;"> Last access : 30 May 2018 &nbsp; <a href="#" class="btn btn-d
                         <a  href="index.html"><i class="fa fa-dashboard fa-2x"></i> Dashboard<span class="fa arrow"></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Banks</a>
+                                <a href="index.php?com=bank">Banks</a>
                             </li>
                             <li>
-                                <a href="#">Users</a>
+                                <a href="index.php?com=dealer">Users</a>
                             </li>
                         </ul>
                     </li>
@@ -74,7 +82,7 @@ font-size: 16px;"> Last access : 30 May 2018 &nbsp; <a href="#" class="btn btn-d
                                 <a href="#">Statistic</a>
                             </li>
                             <li>
-                                <a href="#">Players</a>
+                                <a href="index.php?com=players">Players</a>
                             </li>
                             <li>
                                 <a href="#">Devices</a>
@@ -153,9 +161,15 @@ font-size: 16px;"> Last access : 30 May 2018 &nbsp; <a href="#" class="btn btn-d
         <div id="page-wrapper" >
             <div id="page-inner">
                 <div class="row">
+                    <div class="col-md-6">
+                     <h4><?php echo $sidebar; ?></h4>  
+                    </div>
+                    <div class="col-md-6" style="text-align:right;">
+                      <?php echo (isset($box) ? $box : ''); ?>  
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-12">
-                     <h4><?php echo $sidebar; ?></h4>
-                        <p></p>
                        <?php echo $content; ?>
                     </div>
                 </div>
@@ -169,18 +183,13 @@ font-size: 16px;"> Last access : 30 May 2018 &nbsp; <a href="#" class="btn btn-d
         </div>
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    <!-- JQUERY SCRIPTS -->
-    <script src="<?php echo my_template_position(); ?>/assets/js/jquery-1.10.2.js"></script>
       <!-- BOOTSTRAP SCRIPTS -->
     <script src="<?php echo my_template_position(); ?>/assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
     <script src="<?php echo my_template_position(); ?>/assets/js/jquery.metisMenu.js"></script>
       <!-- CUSTOM SCRIPTS -->
     <script src="<?php echo my_template_position(); ?>/assets/js/custom.js"></script>
-<?php  
- 
-if(isset($js_file))print $js_file;
-?>
+
     
 <script language="Javascript">
 <?php

@@ -8,11 +8,11 @@
 /* KONFIGURASI KONEKSI DATABASE */
 
 
-    ini_set("display_errors", 1 );
-    define( "DATABASE_HOST" , "sql2.freesqldatabase.com" ); 
-    define( "DATABASE_USER" , "sql2290984" );
-    define( "DATABASE_PASSWORD" , "gE8*dY9!" );
-    define( "DATABASE_NAME" , "sql2290984" );
+ini_set("display_errors", 1 );
+define( "DATABASE_HOST" , "sql2.freesqldatabase.com" ); 
+define( "DATABASE_USER" , "sql2290984" );
+define( "DATABASE_PASSWORD" , "gE8*dY9!" );
+define( "DATABASE_NAME" , "sql2290984" );
    
 /* KONFIGURASI PAGING */
 define("PAGING_PERHALAMAN" , 14);

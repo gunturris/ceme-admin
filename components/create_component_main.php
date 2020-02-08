@@ -32,7 +32,7 @@ function generate_html($module_name,  $db_table, $table_column , $headerslist , 
     $path = __DIR__.'/'.$module_name;
     $headers = convert_to_array($headerslist); 
     $html_content = "<?php\n";
-	$html_content .= template_text($module_name , $db_table , $table_column , $headers , $primary_key);
+	$html_content .= template_text($module_name , $db_table , $table_column , $headers , $primary_key, $forms);
 	 
     $file_html = $path.'/html.'.$module_name.'.php';
 	$handle = fopen($file_html, 'a+');
