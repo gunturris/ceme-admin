@@ -97,7 +97,8 @@ if( class_exists("mysqli") ){
 		fatal_error( mysql_errno($connection) . ": " . mysql_error($connection)    );
 	}
 }	
-  
+var_dump($connection);
+exit;
 function my_api_load(){
 	 
 	$sets = get_api_file_list('settings');
