@@ -24,8 +24,6 @@ define( "_FOOTER_LABEL" , "Design by <a href=\"#\">PrintDiGo Designer</a>");
 
 define("DEFAULT_TEXT_TANGGAL","'2014-09-24'");
 
- var_dump($_SERVER);
-exit;
 /* DEFAULT AKSES */
 define( "DEFAULT_WEB_URL" ,"user_attendance"); 
 define("_NET_ADDR" ,"../"); 
@@ -42,4 +40,6 @@ define( "PATH_ICON" ,   __TEMPLATE_NAME__. "/icons/");
  
 require_once('autoload.php'); 
 
+ var_dump($_SERVER);
+exit;
 //INISIASI KODE  
