@@ -14,4 +14,6 @@ if(! isset($_SESSION['user_id'])){
 if( ! my_is_component( $_GET['com'] ) ){
 	fatal_error('Module utama tidak ditemukan');
 }  
+var_dump($_GET);
+exit;
 my_exec($_GET['com'] ); 
