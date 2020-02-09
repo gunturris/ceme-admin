@@ -73,7 +73,8 @@ function get_api_file_list( $folder ){
 	    while (false !== ($file = readdir($handle))) { 
              $filepath = $PATH .'/'. $file;
              $expfile = explode('.' , $file );
-	         if( is_file( $filepath ) and ( end($expfile) ) == 'php'  )
+             $last_ext = end($expfile);
+	         if( is_file( $filepath ) and ( $last_ext   == 'php'  )
                  $files[] = $folder.'/'.$file; 
 	    }
 		
