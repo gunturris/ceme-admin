@@ -39,7 +39,5 @@ define("__TEMPLATE_NAME__" , "bs-binary-admin");
 define( "PATH_ICON" ,   __TEMPLATE_NAME__. "/icons/"); 
  
 require_once('autoload.php'); 
-
- var_dump($_SERVER);
-exit;
+ 
 //INISIASI KODE  
