@@ -207,8 +207,7 @@ function my_template_position(){
 
 function my_is_component( $component_name ){
 	$component_control = MY_COMPONENT_PATH . $component_name . '/'.$component_name.'.php';
-	 var_dump($component_control);
-    exit;
+	  
 	if( file_exists($component_control) ) return true;
 	return false;
 }
@@ -349,10 +348,10 @@ function my_direct( $page  ){
 function my_get_path_files(){
 	return MY_FILES_PATH;
 }
- 
+
+my_component_load('__system');
+my_component_load('__viewapi');  
 my_api_load(); 
 define( "my_load" , my_token() );
  
-my_component_load('__system');
-my_component_load('__viewapi'); 
  
