@@ -3,7 +3,7 @@ ini_set("display_errors" , 0);
 require_once("../autoload.php");
 
 $_GET['com'] = isset($_GET['com']) ? $_GET['com'] : DEFAULT_WEB_URL ;
- 
+ var_dump($_GET);
 /* 
 if(! isset($_SESSION['user_id'])){
 	my_direct('login.php');
