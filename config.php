@@ -32,7 +32,7 @@ define( "_FOOTER_LABEL" , "Design by <a href=\"#\">PrintDiGo Designer</a>");
 define("DEFAULT_TEXT_TANGGAL","'2014-09-24'");
 
 /* DEFAULT AKSES */
-define( "DEFAULT_WEB_URL" ,"user_attendance"); 
+define( "DEFAULT_WEB_URL" ,"bank"); 
 //define("_NET_ADDR" ,"../"); 
 define("_NET_ADDR" ,__DIR__ . "/" ); 
 

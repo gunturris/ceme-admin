@@ -1,6 +1,6 @@
 <?php
 ini_set("display_errors" , 1);
-ini_set("memory_limit" , '128M');
+ini_set("memory_limit" , '512M');
 
 require_once(__DIR__ . "/../config.php");
 
