@@ -98,6 +98,8 @@ if( class_exists("mysqli") ){
 		fatal_error( mysql_errno($connection) . ": " . mysql_error($connection)    );
 	}
 }	
+
+var_dump($connection);
 function my_api_load(){
 	 
 	$sets = get_api_file_list('settings');
@@ -242,7 +244,8 @@ function my_callback( $strtoreplace , $template ){
 /* GET COMPONENT HOST */
 function my_http_host(){
 	$webhost = $_SERVER['HTTP_HOST'];
-	return "http://".$webhost."/ceme-admin/web";
+	return "http://".$webhost."/web";
+	//return "http://".$webhost."/ceme-admin/web";
 }
 
 /* LOAD JS CSS */
