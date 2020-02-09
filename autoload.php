@@ -348,10 +348,11 @@ function my_get_path_files(){
 	return MY_FILES_PATH;
 }
  
-var_dump($connection);
-exit;
 my_api_load(); 
 define( "my_load" , my_token() );
  
 my_component_load('__system');
 my_component_load('__viewapi'); 
+
+var_dump($connection);
+exit;
