@@ -83,9 +83,7 @@ function get_api_file_list( $folder ){
 	
 	fatal_error( 'File dalam folder core '.$folder.' tidak dapat di ambil!' ); 
 
-}
-print("fsdfdsfs");
- var_dump($_GET);
+}  
 
 if( class_exists("mysqli") ){ 
 	$connection = new mysqli(DATABASE_HOST ,DATABASE_USER , DATABASE_PASSWORD, DATABASE_NAME);
@@ -99,10 +97,7 @@ if( class_exists("mysqli") ){
 		fatal_error( mysql_errno($connection) . ": " . mysql_error($connection)    );
 	}
 }	
- 
-var_dump($connection);
-var_dump($_SERVER);
-exit;
+  
 function my_api_load(){
 	 
 	$sets = get_api_file_list('settings');
