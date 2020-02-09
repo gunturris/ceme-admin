@@ -32,11 +32,12 @@ define("DEFAULT_TEXT_TANGGAL","'2014-09-24'");
 
 /* DEFAULT AKSES */
 define( "DEFAULT_WEB_URL" ,"user_attendance"); 
-define("_NET_ADDR" ,"../"); 
+//define("_NET_ADDR" ,"../"); 
+define("_NET_ADDR" ,__DIR__); 
 
 //DISINI KEBAWAH JANGAN DI EDIT
 /* ROOT PATH*/
-define( "MY_ROOT_PATH" ,   _NET_ADDR.""); 
+define( "MY_ROOT_PATH" ,  ""); 
 define( "MY_FILES_PATH" ,   _NET_ADDR."files/upload/");  
 define( "MY_COMPONENT_PATH" ,   _NET_ADDR."components/"); 
 define( "PATH_TEMPLATES" ,   "templates/");
