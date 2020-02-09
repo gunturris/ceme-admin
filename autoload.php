@@ -61,7 +61,7 @@ function my_href($com , $page="" , $task="", $params="" ){
 function get_api_file_list( $folder ){
 	
 	$PATH = MY_ROOT_PATH . $folder;
- var_dump($PATH);
+  
 	if( ! is_dir( $PATH ) ){
 		fatal_error( 'Folder core '.$folder.' tidak ditemukan!' );
 	}
@@ -354,6 +354,4 @@ define( "my_load" , my_token() );
  
 my_component_load('__system');
 my_component_load('__viewapi'); 
-
-var_dump($connection);
-exit;
+ 
