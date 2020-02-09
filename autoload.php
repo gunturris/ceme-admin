@@ -9,7 +9,8 @@ if( ! is_dir( MY_FILES_PATH ) ){
 ini_set('allow_call_time_pass_reference',"0");
 session_start(); 
 require_once("../config.php");
-
+var_dump($_SERVER);
+exit;
 function fatal_error( $msg  ){
  
 	$error = array($msg);
