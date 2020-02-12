@@ -4,6 +4,9 @@ ini_set("memory_limit" , '512M');
 
 require_once(__DIR__ . "/../config.php");
 
+var_dump($_SERVER);
+exit;
+
 $_GET['com'] = isset($_GET['com']) ? $_GET['com'] : DEFAULT_WEB_URL ;
 
 /* 
