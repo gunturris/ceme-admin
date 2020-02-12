@@ -351,9 +351,11 @@ function my_get_path_files(){
 	return MY_FILES_PATH;
 }
 
-var_dump($connection);
-exit;
+
 my_component_load('__system');
+var_dump($connection);
+var_dump($_SERVER);
+exit;
 my_component_load('__viewapi');  
 my_api_load(); 
 define( "my_load" , my_token() );
