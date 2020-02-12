@@ -4,9 +4,6 @@ ini_set("memory_limit" , '512M');
 
 require_once(__DIR__ . "/../config.php");
 
-var_dump($_SERVER);
-exit;
-
 $_GET['com'] = isset($_GET['com']) ? $_GET['com'] : DEFAULT_WEB_URL ;
 
 /* 
@@ -14,8 +11,13 @@ if(! isset($_SESSION['user_id'])){
 	my_direct('login.php');
 } 
 */
+
+var_dump($_GET); 
 if( ! my_is_component( $_GET['com'] ) ){
 	fatal_error('Module utama tidak ditemukan');
 }  
+
+var_dump($_SERVER);
+exit;
 
 my_exec($_GET['com'] ); 
