@@ -26,6 +26,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST" ):
 			break; 
 	}
 else: 	
+    var_dump($_SERVER);
+    exit;
 	if($task == "edit"){ 
 		$content =  edit_bank($id) ;
 	}else{
