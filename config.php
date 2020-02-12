@@ -19,9 +19,8 @@ if( $_SERVER['HTTP_HOST'] == "18.141.9.181" ){
     define( "DATABASE_USER" , "sql2290984" );
     define( "DATABASE_PASSWORD" , "gE8*dY9!" );
     define( "DATABASE_NAME" , "sql2290984" );
-}
-var_dump(DATABASE_HOST);
-var_dump(DATABASE_PASSWORD);
+} 
+
 /* KONFIGURASI PAGING */
 define("PAGING_PERHALAMAN" , 14);
 define("SCROLL_PERHALAMAN" ,  5);

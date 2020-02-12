@@ -9,7 +9,7 @@ $task = isset($_GET['task']) ? $_GET['task'] : '';
 $id = isset( $_GET['id'] ) ? $_GET['id']:  0;
 $modulname = 'Data bank';
  
-if($_SERVER['REQUEST_METHOD'] == "POST" ):
+if($_SERVER['REQUEST_METHOD'] == "POST" ){ 
  	switch($task){
 		case   "edit" :
 			$validatepost = form_bank_validate($id);
@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" ):
 			 }
 			break; 
 	}
-else: 	
+}else{  	
     var_dump($_SERVER);
     exit;
 	if($task == "edit"){ 
@@ -35,5 +35,5 @@ else:
 		load_facebox_script();
 		$content =  list_bank() ; 
 	}
-endif; 
+}
 generate_my_web($content, $modulname ); 
