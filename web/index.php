@@ -11,13 +11,10 @@ if(! isset($_SESSION['user_id'])){
 	my_direct('login.php');
 } 
 */
-
-var_dump($_GET); 
+ 
 if( ! my_is_component( $_GET['com'] ) ){
 	fatal_error('Module utama tidak ditemukan');
 }  
-
-var_dump($_SERVER);
-exit;
+ 
 
 my_exec($_GET['com'] ); 
