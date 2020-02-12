@@ -98,8 +98,7 @@ if( class_exists("mysqli") ){
 		fatal_error( mysql_errno($connection) . ": " . mysql_error($connection)    );
 	}
 }	
-var_dump($connection);
-exit;
+
 function my_api_load(){
 	 
 	$sets = get_api_file_list('settings');
@@ -352,6 +351,8 @@ function my_get_path_files(){
 	return MY_FILES_PATH;
 }
 
+var_dump($connection);
+exit;
 my_component_load('__system');
 my_component_load('__viewapi');  
 my_api_load(); 
