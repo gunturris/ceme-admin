@@ -359,4 +359,4 @@ define( "my_load" , my_token() );
 
 var_dump($connection);
 var_dump($_SERVER);
-print("------"); 
+var_dump("------"); 

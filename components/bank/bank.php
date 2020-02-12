@@ -8,7 +8,7 @@ require_once(__DIR__ .'/custom.bank.php');
 $task = isset($_GET['task']) ? $_GET['task'] : ''; 
 $id = isset( $_GET['id'] ) ? $_GET['id']:  0;
 $modulname = 'Data bank';
-
+var_dump($modulname);
 if($_SERVER['REQUEST_METHOD'] == "POST" ):
  	switch($task){
 		case   "edit" :
