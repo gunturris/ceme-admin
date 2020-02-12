@@ -1,5 +1,5 @@
 <?php
-global $box;
+global $box, $custombar;
 ?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -79,7 +79,7 @@ font-size: 16px;">  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">
                         <a  href="index.html"><i class="fa fa-bar-chart-o fa-2x"></i> Players stas<span class="fa arrow"></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Statistic</a>
+                                <a href="index.php?com=statistics">Statistic</a>
                             </li>
                             <li>
                                 <a href="index.php?com=players">Players</a>
@@ -166,6 +166,7 @@ font-size: 16px;">  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">
                     </div>
                 </div> 
                 <?php echo (isset($box) ? $box : ''); ?> 
+                <?php echo (isset($custombar) ? $custombar : ''); ?> 
                 <div class="row">
                     <div class="col-md-12">
                        <?php echo $content; ?>

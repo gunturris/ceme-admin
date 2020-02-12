@@ -35,4 +35,3 @@ else:
 	}
 endif; 
 generate_my_web($content, $modulname );
-?>
