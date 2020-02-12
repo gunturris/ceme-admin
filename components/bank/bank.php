@@ -9,6 +9,7 @@ $task = isset($_GET['task']) ? $_GET['task'] : '';
 $id = isset( $_GET['id'] ) ? $_GET['id']:  0;
 $modulname = 'Data bank';
 var_dump($modulname);
+exit;
 if($_SERVER['REQUEST_METHOD'] == "POST" ):
  	switch($task){
 		case   "edit" :
