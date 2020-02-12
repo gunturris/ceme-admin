@@ -356,7 +356,4 @@ my_component_load('__system');
 my_component_load('__viewapi');  
 my_api_load(); 
 define( "my_load" , my_token() );
-
-var_dump($connection);
-var_dump($_SERVER);
-var_dump("------"); 
+ 

@@ -25,7 +25,7 @@
 	
 	$query 	= "SELECT * FROM bank ";
 	$result = my_query($query);
-	
+	var_dump($result);
      
 	//PAGING CONTROL START
 	$total_records = my_num_rows($result );
