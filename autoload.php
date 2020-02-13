@@ -9,7 +9,7 @@ ini_set("display_errors" , 1);
 ini_set("memory_limit" , "32MB");
 ini_set('allow_call_time_pass_reference',"0");
 session_start(); 
-require_once(__DIR__ . 'config.php'); 
+require_once(__DIR__ . '/config.php'); 
 
 function fatal_error( $msg  ){
  
