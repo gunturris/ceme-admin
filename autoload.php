@@ -383,8 +383,7 @@ function my_get_path_files(){
 }
 
 require_once( '/var/www/html/ceme-admin/settings/api.database.php' );
-var_dump($_GET);
-exit;
+ 
 my_component_load('__system');
  
 my_component_load('__viewapi');  
