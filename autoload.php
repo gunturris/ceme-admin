@@ -142,7 +142,7 @@ function my_api_load(){
 function my_component_load( $component_name , $run = true , $files = array() ){
 
 	$component_path = MY_COMPONENT_PATH . $component_name;
-
+    var_dump($component_path);
 	if( ! is_dir($component_path) ){
 		fatal_error( 'Tidak ditemukan component ' . $component_name ); 
 	}
@@ -387,7 +387,6 @@ require_once( '/var/www/html/ceme-admin/settings/api.database.php' );
 my_component_load('__system');
 
 my_component_load('__viewapi');  
-var_dump($_SERVER);
-exit;
+ 
 define( "my_load" , my_token() );
   
