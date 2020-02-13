@@ -42,11 +42,6 @@ var_dump(DATABASE_NAME);
 //define( "MY_ROOT_PATH" , _NET_ADDR ); 
 //define( "MY_FILES_PATH" ,   _NET_ADDR."files/upload/");  
 exit;
-define( "MY_COMPONENT_PATH" ,   _NET_ADDR."components/"); 
-define( "PATH_TEMPLATES" ,   "templates/");
-define("__TEMPLATE_NAME__" , "bs-binary-admin");
-/* FILES PATH*/
-define( "PATH_ICON" ,   __TEMPLATE_NAME__. "/icons/"); 
 var_dump(DATABASE_HOST)
 //include_once( 'autoload.php'); 
  var_dump($_SERVER);
