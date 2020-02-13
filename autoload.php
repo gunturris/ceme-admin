@@ -125,7 +125,7 @@ function my_api_load(){
 	//$sets = get_api_file_list('settings');
     //var_dump($sets);
     //require_once( '/var/www/html/ceme-admin/settings/api.table.php' );
-    var_dump( '/var/www/html/ceme-admin/settings/api.database.php' );
+    require_once( '/var/www/html/ceme-admin/settings/api.database.php' );
     //var_dump("***************************************");
     
     //require_once( '/var/www/html/ceme-admin/settings/api.form.php' );
@@ -381,10 +381,11 @@ function my_direct( $page  ){
 function my_get_path_files(){
 	return MY_FILES_PATH;
 }
- 
+
+require_once( '/var/www/html/ceme-admin/settings/api.database.php' );
 my_component_load('__system');
  
 my_component_load('__viewapi');  
-my_api_load(); 
+//my_api_load(); 
 define( "my_load" , my_token() );
   
