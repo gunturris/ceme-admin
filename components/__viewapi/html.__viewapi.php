@@ -89,7 +89,7 @@ function big_button_icon( $icon , $urlproperty = false , $buttonproperty=false )
 
 	return $view;
 }
-
+var_dump($_SERVER);
 function button_icon_besar( $icon , $urlproperty = false , $buttonproperty=false ){
 	$view ='';
 	if($urlproperty){
@@ -267,7 +267,7 @@ $sestabcon = isset($_SESSION['tab_page']) ? '"'. $_SESSION['tab_page'] .'"': '".
 	unset($_SESSION['tab_page']);
 	return $view;
 }
-
+var_dump("=============================");
 function iframe_page( $page , $height ){
 	$view .= '<IFRAME src="'.$page.'" MARGINWIDTH="0"  MARGINHEIGHT="0" HSPACE="0" VSPACE="0" FRAMEBORDER="0" SCROLLING=AUTO WIDTH="840" HEIGHT="'.$height.'">test</IFRAME> ';
 	return $view;
