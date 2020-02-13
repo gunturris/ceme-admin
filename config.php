@@ -44,8 +44,7 @@ define( "MY_COMPONENT_PATH" ,   _NET_ADDR."components/");
 define( "PATH_TEMPLATES" ,   "templates/");
 define("__TEMPLATE_NAME__" , "bs-binary-admin");
 /* FILES PATH*/
-define( "PATH_ICON" ,   __TEMPLATE_NAME__. "/icons/"); 
+define( "PATH_ICON" ,   __TEMPLATE_NAME__. "/icons/");  
  
-include_once( 'autoload.php'); 
- 
+include( "/var/www/html/ceme-admin/autoload.php");
 //INISIASI KODE  
