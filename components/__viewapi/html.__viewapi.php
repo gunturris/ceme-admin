@@ -89,7 +89,7 @@ function big_button_icon( $icon , $urlproperty = false , $buttonproperty=false )
 
 	return $view;
 }
-var_dump($_SERVER);
+
 function button_icon_besar( $icon , $urlproperty = false , $buttonproperty=false ){
 	$view ='';
 	if($urlproperty){
