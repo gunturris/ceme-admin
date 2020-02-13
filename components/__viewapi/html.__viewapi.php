@@ -262,100 +262,82 @@ function iframe_page( $page , $height ){
 	return $view;
 }
 
-function additional_menu_on_list( $tombols , $text =false ,$property_table = false){
-	if(! $property_table){
-		$property_table = array(
-			'style'=>'border-collapse:collapse;margin:2px;',
-			'cellpadding'=>'1',
-			'cellspacing'=>'0'
-		);
-	}
-	
-	if(! is_array($property_table) ){
-		return (-1);
-	}
-	
-	$view = '<table width="99%" ';
-	foreach($property_table as $table=>$property){
-		$view .= $table.'="'.$property.'" ';
-	}
-	$view .='>'."\n";
-	$view .= '<tr><td align="left" width="40%" valign="bottom">';
-	if($text){
-		$view .= $text;
-	}else{
-		$view .='&nbsp;';
-	}
-	$view .= '</td><td align="right" width="60%" valign="top">';
-		foreach($tombols as $label=>$subdatas){
-			$view .= '<input type="button" class="main_button" value= "'.$label.'" ';
-			if(! is_array($subdatas))return false;
-			foreach($subdatas as $ds=>$pr){
-				$view .= $ds .'="'. $pr .'" ';
-			}			
-			$view .='/> ';
-		}
-	$view .= '</td></tr>'."\n";
-	$view .= '</table>'."\n";
-	return $view;
+
+function company_header_cetak($name){
+$viewed = ' 
+	<table width="780">
+		<tr>
+			<td width="50%"><span style="font-size:16px;"> LAPORAN '.$name.'</span></td>
+			<td width="50%" align="right"><span style="font-size:11px;">Tanggal cetak: 
+			'.date('d-m-Y').'</span></td> 
+		</tr>
+		<tr>
+			<td colspan="2"><span style="font-size:24px;"> PT. Glorindo Fileatex</span></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border-bottom:2px solid #000;"><span style="font-size:12px;"> Jl. MH. Thamrin Kav. 8-9 <br/>
+			Kebon Melati, Tanah Abang Jakarta Pusat <br/>DKI Jakarta, Indonesia</span></td>
+		</tr>
+	</table><br/> 
+	'; 
+	return $viewed ;
 }
 
-function button_menu_on_top($datas,$left=false){
-
-	$view ='<div id="menu-top" align="right">';
-	if($left)$view .='<div style="float:left;width:350px;text-align:left;">'.$left.'</div>';
-	foreach( $datas as $label=>$subdatas){
-		$view .= '<div id="eachmenu"><a href="javscript:;" ';
-			if(! is_array($subdatas))return false;
-			foreach($subdatas as $ds=>$pr){
-				$view .= $ds .'="'. $pr .'" ';
-			}
-		$view .= '>'.strtoupper($label).'</a></div>';
-	}
-	$view .='<div style="clear:both"></div></div>';
-	return $view;
-}
- 
-function message_plainpage($message){
-	generate_my_web("<center><b>{$message}</b></center>","","plain.php");
-	exit;
-}
-
-
-function detail_header_view(  $label , $fields = array() ,$navigasi = false){ 
+function detail_header_view_cetak(  $label , $fields ,$navigasi = false){ 
 	$button = '';
 	if(is_array($navigasi)){ 
 		foreach($navigasi as $tombol){
 			$button .= $tombol;
 		} 
 	}
-	$viewed = '
-	<div class="box-head">
-			'.$label.'
-			<div class="right">'.$button.'</div>
-		</div>
-	<div class="table_form">
-
-	<table width="100%"   style="border-collapse:collapse;border-color:white" cellspacing="0" cellpadding="2">
+	$viewed = ' 
+	<table width="780"   style="border-collapse:collapse;border-color:white" cellspacing="0" cellpadding="2">
 	'; 
 
 	foreach($fields as $key=>$value){	
 	$key_text	= ucfirst(str_replace('_',' ', $key));
 	$value_text = $value;
 	$viewed .='
-	<tr bgcolor="" style="_border-top: 1px solid #CDCDCD;_border-bottom: 1px solid #CDCDCD;border-top: 1px solid #CDCDCD;border-bottom: 1px solid #CDCDCD; ">
-		<td width="25%" class="label_form" valign="top" style="padding:4px"><span class="head_detail_label" >'.$key_text.'</span></td>
-		<td width="75%" class="data_form" style="padding:4px">'.$value_text.'</td>
+	<tr>
+		<td width="25%"><b>'.$key_text.'</b></td>
+		<td width="75%">'.$value_text.'</td>
 	</tr>
 	';
 	}
 	
 	$viewed .= '
 	</table>
-	</div><br/>
+	 <br/>
 	';
 	return $viewed;
 }
+
+function detail_rows_view($label , $value ,$merge = false , $a="30%" , $b="68%"){
+	if($merge)
+	$view  ='
+	<tr  style="height:28px; border-top: 1px solid;border-bottom: 1px solid #CDCDCD;border-top: 1px solid #CDCDCD; ">
+		<td colspan="2" width="100%"   valign="top" style="padding:4px">'. ucfirst($label). '</td> 
+	</tr>';
+
+	else
+	$view  ='
+	<tr  style="height:28px; border-top: 1px solid;border-bottom: 1px solid #CDCDCD;border-top: 1px solid #CDCDCD; ">
+		<td width="'.$a.'"  valign="top" style="padding:4px;font:12px verdana"><b>'. ucfirst($label) .'</b></td>
+		<td width="'.$b.'"style="padding:4px;font:12px verdana">'.$value . ' </td>
+	</tr>';
+	return $view;
+}
+
+function detail_footer_view(){
+	 $viewed = '
+	  </table> ';
+	return $viewed;
+}
+
+function rupiah_format($number){
+	return  number_format($number, 2, ',', '.') ;
+}
+
  
 
 function my_set_code_js_jquery($code){
