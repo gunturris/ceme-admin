@@ -5,8 +5,7 @@ if( ! is_dir( MY_FILES_PATH ) ){
 }
 
 */
-
-ini_set("display_errors" , 1);
+ 
 ini_set("memory_limit" , "32MB");
 ini_set('allow_call_time_pass_reference',"0");
 session_start(); 
@@ -87,8 +86,7 @@ function get_api_file_list( $folder ){
 	fatal_error( 'File dalam folder core '.$folder.' tidak dapat di ambil!' ); 
 
 }  
-
-var_dump($_SERVER);
+ 
 if( class_exists("mysqli") ){ 
 	$connection = new mysqli(DATABASE_HOST ,DATABASE_USER , DATABASE_PASSWORD, DATABASE_NAME);
 	if( mysqli_connect_errno() ){
@@ -102,8 +100,6 @@ if( class_exists("mysqli") ){
 	}
 }	
 
-var_dump($connection);
-exit;
 function my_api_load(){
 	 
 	$sets = get_api_file_list('settings');
@@ -357,7 +353,11 @@ function my_get_path_files(){
 }
 
 
+var_dump("--------");
 my_component_load('__system');
+
+var_dump($connection);
+exit;
 my_component_load('__viewapi');  
 my_api_load(); 
 define( "my_load" , my_token() );
