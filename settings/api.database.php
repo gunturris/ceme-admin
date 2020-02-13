@@ -729,8 +729,8 @@ function form_checkbox($forms){
 
 	return $input;
 
-}
-var_dump("ooooooooooooooooooo1111");
+} 
+
 /*
 	FORM TEXTAREA
 	$forms  
@@ -842,8 +842,7 @@ function form_radiobutton($forms , $datas , $flag=false){
 	}
 	return $form_field;
 }
-
-var_dump("ooooooooooooooooooo");
+ 
 function form_button($forms){
 	$text= isset($forms['type']) ? $forms['type'] : "submit";
 	$name =  isset($forms['name'])  ? $forms['name'] : rand(1000 , 9999 ) ;
