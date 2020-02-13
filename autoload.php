@@ -135,13 +135,7 @@ function my_api_load(){
     require_once( '/var/www/html/ceme-admin/settings/api.permission.php' );
     var_dump("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
     exit;
-	foreach( $sets as $filename ){
-         
-		if($filename != "setting.php"){ 
-          print(MY_ROOT_PATH . $filename);    
-		  //require_once( MY_ROOT_PATH . $filename );
-        }
-	}
+	 
 }
 
 /* COMPONENT LOAD */
