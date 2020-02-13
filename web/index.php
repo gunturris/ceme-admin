@@ -14,8 +14,9 @@ if(! isset($_SESSION['user_id'])){
 */
 
 $comp = my_is_component( $_GET['com'] ) ;
- 
-if( ! $comp ){
+ var_dump($comp)
+     exit;
+if( $comp ){
     var_dump("DDDDD");
      exit;
 	//fatal_error('Module utama tidak ditemukan');
