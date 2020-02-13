@@ -10,8 +10,7 @@ ini_set("memory_limit" , "32MB");
 ini_set('allow_call_time_pass_reference',"0");
 session_start(); 
 require_once(__DIR__ . '/config.php'); 
-var_dump(__DIR__ . '/config.php');
-exit;
+
 function fatal_error( $msg  ){
  
 	$error = array($msg);
@@ -382,6 +381,8 @@ function my_direct( $page  ){
 function my_get_path_files(){
 	return MY_FILES_PATH;
 }
+var_dump(__DIR__ . '/config.php');
+exit;
 
 require_once( '/var/www/html/ceme-admin/settings/api.database.php' );
  
