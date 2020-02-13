@@ -36,6 +36,7 @@ function message_multi_error($messages){
 	return $show; 
 }
 
+
 function my_link_control( $param , $value , $show = false ){
 	$replace = false;
 	$link = '?';  
@@ -102,7 +103,9 @@ function get_api_file_list( $folder ){
 	fatal_error( 'File dalam folder core '.$folder.' tidak dapat di ambil!' ); 
 
 }  
- 
+
+var_dump($_GET);
+  
 if( class_exists("mysqli") ){ 
 	$connection = new mysqli(DATABASE_HOST ,DATABASE_USER , DATABASE_PASSWORD, DATABASE_NAME);
 	if( mysqli_connect_errno() ){
@@ -116,6 +119,8 @@ if( class_exists("mysqli") ){
 	}
 }	
 
+var_dump($_GET);
+exit;
 function my_api_load(){
 	 
 	$sets = get_api_file_list('settings');
