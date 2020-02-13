@@ -359,3 +359,90 @@ function detail_header_view(  $label , $fields = array() ,$navigasi = false){
 	';
 	return $viewed;
 }
+
+
+function company_header_cetak($name){
+$viewed = ' 
+	<table width="780">
+		<tr>
+			<td width="50%"><span style="font-size:16px;"> LAPORAN '.$name.'</span></td>
+			<td width="50%" align="right"><span style="font-size:11px;">Tanggal cetak: 
+			'.date('d-m-Y').'</span></td> 
+		</tr>
+		<tr>
+			<td colspan="2"><span style="font-size:24px;"> PT. Glorindo Fileatex</span></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border-bottom:2px solid #000;"><span style="font-size:12px;"> Jl. MH. Thamrin Kav. 8-9 <br/>
+			Kebon Melati, Tanah Abang Jakarta Pusat <br/>DKI Jakarta, Indonesia</span></td>
+		</tr>
+	</table><br/> 
+	'; 
+	return $viewed ;
+}
+
+function detail_header_view_cetak(  $label , $fields ,$navigasi = false){ 
+	$button = '';
+	if(is_array($navigasi)){ 
+		foreach($navigasi as $tombol){
+			$button .= $tombol;
+		} 
+	}
+	$viewed = ' 
+	<table width="780"   style="border-collapse:collapse;border-color:white" cellspacing="0" cellpadding="2">
+	'; 
+
+	foreach($fields as $key=>$value){	
+	$key_text	= ucfirst(str_replace('_',' ', $key));
+	$value_text = $value;
+	$viewed .='
+	<tr>
+		<td width="25%"><b>'.$key_text.'</b></td>
+		<td width="75%">'.$value_text.'</td>
+	</tr>
+	';
+	}
+	
+	$viewed .= '
+	</table>
+	 <br/>
+	';
+	return $viewed;
+}
+
+function detail_rows_view($label , $value ,$merge = false , $a="30%" , $b="68%"){
+	if($merge)
+	$view  ='
+	<tr  style="height:28px; border-top: 1px solid;border-bottom: 1px solid #CDCDCD;border-top: 1px solid #CDCDCD; ">
+		<td colspan="2" width="100%"   valign="top" style="padding:4px">'. ucfirst($label). '</td> 
+	</tr>';
+
+	else
+	$view  ='
+	<tr  style="height:28px; border-top: 1px solid;border-bottom: 1px solid #CDCDCD;border-top: 1px solid #CDCDCD; ">
+		<td width="'.$a.'"  valign="top" style="padding:4px;font:12px verdana"><b>'. ucfirst($label) .'</b></td>
+		<td width="'.$b.'"style="padding:4px;font:12px verdana">'.$value . ' </td>
+	</tr>';
+	return $view;
+}
+
+function detail_footer_view(){
+	 $viewed = '
+	  </table> ';
+	return $viewed;
+}
+
+function rupiah_format($number){
+	return  number_format($number, 2, ',', '.') ;
+}
+
+ 
+
+function my_set_code_js_jquery($code){
+	global $js_jquery_code;
+	if(isset($js_jquery_code))$js_jquery_code .= $code ;
+	else $js_jquery_code=$code;
+	if(!defined('JS_JQUERY_CODE'))define('JS_JQUERY_CODE' , $code );
+	return $js_jquery_code;
+}
+  
