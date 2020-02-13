@@ -442,8 +442,48 @@ function my_set_code_js_jquery($code){
 	return $js_jquery_code;
 }
   
-  
+ 
+function rupiah_terbilang($x)
+{
+  $abil = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+  if ($x < 12)
+    return " " . $abil[$x];
+  elseif ($x < 20)
+    return rupiah_terbilang($x - 10) . "belas";
+  elseif ($x < 100)
+    return rupiah_terbilang($x / 10) . " puluh" . rupiah_terbilang($x % 10);
+  elseif ($x < 200)
+    return " seratus" . rupiah_terbilang($x - 100);
+  elseif ($x < 1000)
+    return rupiah_terbilang($x / 100) . " ratus" . rupiah_terbilang($x % 100);
+  elseif ($x < 2000)
+    return " seribu" . rupiah_terbilang($x - 1000);
+  elseif ($x < 1000000)
+    return rupiah_terbilang($x / 1000) . " ribu" . rupiah_terbilang($x % 1000);
+  elseif ($x < 1000000000)
+    return rupiah_terbilang($x / 1000000) . " juta" . rupiah_terbilang($x % 1000000);
+}
+ 
 
+function print_report_button_script($pemeriksaan ){
+	my_set_code_js('
+function prinrReport(i){
+	var lnxopen = \'index.php?com=report&task='.$pemeriksaan.'&id=\' + i;
+	window.open(lnxopen,\'mywin\',\'left=20,top=20,width=800,height=600,toolbar=0,resizable=0\');
+}	
+	'); 
+}
+
+function print_report_button($pemeriksaan , $pemeriksaan_id){
+	$fields = my_get_data_by_id($pemeriksaan, 'pemeriksaan_id' ,$pemeriksaan_id);
+	$print_button = ' <img src="templates/icons/printer.gif" border="0"/>';
+	if($fields)
+	$view = '<a href="javascript:prinrReport('.$pemeriksaan_id.')">'. $print_button .'</a>';
+	else
+	$view = '<a href="javascript:alert(\'Data belum tersedia\')">'. $print_button .'</a>';
+	return $view;
+}
+/*
 function notice_text( $value , $normal ){
 	if(value_is_between( $value , $normal )){
 		if($value == "+" OR $value =="-"){
@@ -456,7 +496,7 @@ function notice_text( $value , $normal ){
 	}
 	return '<span style="color:red">'.$value.'</span>';
 }
- 
+  
  
 function dropdown_multi_rows_extends_dua( $parent , $child , $file_combo , $opsi_pilihan   ){
 
@@ -522,7 +562,7 @@ function dropdown_multi_rows_extends_dua( $parent , $child , $file_combo , $opsi
 	return $vi;	
 }
  
-
+*/
 function jam_formulir($name , $value){
 	$datas = array(); 
 	for( $i=0; $i<=23; $i++ ){
