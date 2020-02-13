@@ -11,8 +11,8 @@ if(! isset($_SESSION['user_id'])){
 	my_direct('login.php');
 } 
 */
-
-if( ! my_is_component( $_GET['com'] ) ){
+$comp = my_is_component( $_GET['com'] ) ;
+if( ! $comp ){
     var_dump("DDDDD");
      exit;
 	fatal_error('Module utama tidak ditemukan');
