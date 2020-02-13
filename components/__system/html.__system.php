@@ -13,20 +13,6 @@ function error_no($message , $flag = true ){
 
 }
 
-function message_error($message){
-
-return '<div style="color:red;border:1px solid red;padding:4px" class="error-line">' . $message . '</div><br/>';
-}
-
-function message_multi_error($messages){
-	if(! is_array($messages) ) return false;
-		$show ='<span class="notification n-error" style="line-height:24px;"> ';
-			foreach( $messages as $message ): 
-				$show .= "- ". $message."<br />";
-			endforeach; 
-		$show .=' </span>';
-	return $show; 
-}
 
 function get_config_data($name){
 	$name = strtoupper($name);

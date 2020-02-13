@@ -5,7 +5,7 @@ if( ! is_dir( MY_FILES_PATH ) ){
 }
 
 */
- 
+ini_set("display_errors" , 1); 
 ini_set("memory_limit" , "32MB");
 ini_set('allow_call_time_pass_reference',"0");
 session_start(); 
@@ -18,6 +18,22 @@ function fatal_error( $msg  ){
 	generate_my_web( $content  ,"FATAL ERROR" , "index.php");
 	exit;
 
+}
+
+
+function message_error($message){
+
+return '<div style="color:red;border:1px solid red;padding:4px" class="error-line">' . $message . '</div><br/>';
+}
+
+function message_multi_error($messages){
+	if(! is_array($messages) ) return false;
+		$show ='<span class="notification n-error" style="line-height:24px;"> ';
+			foreach( $messages as $message ): 
+				$show .= "- ". $message."<br />";
+			endforeach; 
+		$show .=' </span>';
+	return $show; 
 }
 
 function my_link_control( $param , $value , $show = false ){
