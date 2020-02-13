@@ -1,10 +1,8 @@
 <?php
-$funcexists = function_exists('class_exists');
-var_dump($funcexists);
+ 
  
 $class_mysqli_exists = class_exists('mysqli') ;
-var_dump($class_mysqli_exists);
-exit;
+ 
 if( $class_mysqli_exists ):
 	/* EXECUTE QUERY */
 	function my_query( $query ){
@@ -105,6 +103,7 @@ else:
 	}
 endif;
 
+var_dump("============================================== =================== ==================================");
 /* Get table fields list*/
 function my_get_field_list( $table_name ){
 	
