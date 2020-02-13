@@ -378,6 +378,6 @@ my_component_load('__viewapi');
 
 define( "my_load" , my_token() );
  
-var_dump($_SERVER
+var_dump($_SERVER);
 my_api_load(); 
 var_dump($_GET);         
