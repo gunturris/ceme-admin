@@ -1,7 +1,7 @@
 <?php 
 ini_set("diplay_errors" , 1);
 var_dump("AAAAA");
-include_once( "/var/www/html/ceme-admin/config.php");
+include( "/var/www/html/ceme-admin/config.php");
 var_dump("BBBBBB");
 $_GET['com'] = isset($_GET['com']) ? $_GET['com'] : DEFAULT_WEB_URL ;
 var_dump("CCCC");
