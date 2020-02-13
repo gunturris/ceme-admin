@@ -47,6 +47,7 @@ define("__TEMPLATE_NAME__" , "bs-binary-admin");
 define( "PATH_ICON" ,   __TEMPLATE_NAME__. "/icons/");  
  
 include( "/var/www/html/ceme-admin/autoload.php");
-$test= my_is_component( $component_name );
+
+$test= my_is_component( 'bank' );
 var_dump($test);
 //INISIASI KODE  
