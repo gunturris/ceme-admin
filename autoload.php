@@ -127,7 +127,11 @@ function my_api_load(){
      require_once( '/var/www/html/ceme-admin/settings/api.form.php' );
     var_dump("***************************************");
      require_once( '/var/www/html/ceme-admin/settings/api.table.php' );
-    var_dump($_SERVER);
+    var_dump("++++++++++++++++++++++++");
+     require_once( '/var/www/html/ceme-admin/settings/api.permission.php' );
+    var_dump("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+     require_once( '/var/www/html/ceme-admin/settings/api.image.php' );
+    var_dump("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
     exit;
 	foreach( $sets as $filename ){
          
