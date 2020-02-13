@@ -82,8 +82,7 @@ function get_api_file_list( $folder ){
   
 	if( ! is_dir( $PATH ) ){
 		fatal_error( 'Folder core '.$folder.' tidak ditemukan!' );
-	}
-	var_dump($PATH);
+	} 
     
 	if ($handle = opendir( $PATH )) {
 		
@@ -93,13 +92,13 @@ function get_api_file_list( $folder ){
              $filepath = $PATH .'/'. $file;
              $expfile = explode('.' , $file );
              $last_ext = end($expfile);
-            var_dump($last_ext);
+             
 	         if( is_file( $filepath ) and ( $last_ext   == 'php'  ) )
                  $files[] = $folder.'/'.$file; 
 	    }
 		
 		closedir($handle);
-        exit;
+         
 		return $files;
 	}
 	
@@ -125,8 +124,11 @@ function my_api_load(){
 	 
 	$sets = get_api_file_list('settings');
 	foreach( $sets as $filename ){
-		if($filename != "setting.php")
-		require_once( MY_ROOT_PATH . $filename );
+        var_dump($filename);
+		if($filename != "setting.php"){ 
+          print(MY_ROOT_PATH . $filename);    
+		  require_once( MY_ROOT_PATH . $filename );
+        }
 	}
 }
 
