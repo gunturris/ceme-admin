@@ -388,7 +388,7 @@ my_component_load('__system' , false);
 
 var_dump(__DIR__ . '/config.php');
  
-//my_component_load('__viewapi' , false);  
+my_component_load('__viewapi' , false);  
 exit;
 //define( "my_load" , my_token() );
   
