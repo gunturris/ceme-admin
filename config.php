@@ -41,6 +41,7 @@ var_dump(DATABASE_NAME);
 /* ROOT PATH*/
 //define( "MY_ROOT_PATH" , _NET_ADDR ); 
 //define( "MY_FILES_PATH" ,   _NET_ADDR."files/upload/");  
+exit;
 define( "MY_COMPONENT_PATH" ,   _NET_ADDR."components/"); 
 define( "PATH_TEMPLATES" ,   "templates/");
 define("__TEMPLATE_NAME__" , "bs-binary-admin");
