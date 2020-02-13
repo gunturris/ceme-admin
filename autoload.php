@@ -88,6 +88,7 @@ function get_api_file_list( $folder ){
 
 }  
 
+var_dump($_SERVER);
 if( class_exists("mysqli") ){ 
 	$connection = new mysqli(DATABASE_HOST ,DATABASE_USER , DATABASE_PASSWORD, DATABASE_NAME);
 	if( mysqli_connect_errno() ){
@@ -101,6 +102,8 @@ if( class_exists("mysqli") ){
 	}
 }	
 
+var_dump($connection);
+exit;
 function my_api_load(){
 	 
 	$sets = get_api_file_list('settings');
