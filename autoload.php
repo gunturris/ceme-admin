@@ -387,7 +387,6 @@ require_once( '/var/www/html/ceme-admin/settings/api.database.php' );
 my_component_load('__system');
 
 my_component_load('__viewapi');  
- var_dump($_SERVER);
-exit;
+
 define( "my_load" , my_token() );
   

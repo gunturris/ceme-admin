@@ -35,7 +35,7 @@ define("DEFAULT_TEXT_TANGGAL","'2014-09-24'");
 define( "DEFAULT_WEB_URL" ,"bank"); 
 //define("_NET_ADDR" ,"../"); 
 define("_NET_ADDR" ,__DIR__ . "/" ); 
-
+var_dump(DATABASE_NAME);
 //DISINI KEBAWAH JANGAN DI EDIT
 /* ROOT PATH*/
 define( "MY_ROOT_PATH" , _NET_ADDR ); 
@@ -45,7 +45,7 @@ define( "PATH_TEMPLATES" ,   "templates/");
 define("__TEMPLATE_NAME__" , "bs-binary-admin");
 /* FILES PATH*/
 define( "PATH_ICON" ,   __TEMPLATE_NAME__. "/icons/"); 
-
+var_dump(DATABASE_HOST)
 include_once( 'autoload.php'); 
- 
+ var_dump($_SERVER);
 //INISIASI KODE  
