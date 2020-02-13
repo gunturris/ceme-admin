@@ -233,8 +233,6 @@ function my_is_component( $component_name ){
 }
 
 
-var_dump($_GET);
-exit;
 /*RUN COMPONENT */
 function my_exec( $component_name ){
 	$component_control = MY_COMPONENT_PATH . $component_name . '/'.$component_name.'.php';
@@ -334,6 +332,8 @@ function my_token(){
 }
 
 
+var_dump($_GET);
+exit;
 function generate_facebox_template($content ,$sidebar=false , $template = "facebox.php" , $module= false){
 	if( $module && my_is_component( $module ) )	{
 		$template_path = MY_COMPONENT_PATH . $module . "/". $template;
