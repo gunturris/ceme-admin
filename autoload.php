@@ -381,13 +381,13 @@ function my_direct( $page  ){
 function my_get_path_files(){
 	return MY_FILES_PATH;
 }
-var_dump(__DIR__ . '/config.php');
-exit;
 
 require_once( '/var/www/html/ceme-admin/settings/api.database.php' );
  
 my_component_load('__system');
-
+exit;
+var_dump(__DIR__ . '/config.php');
+ 
 my_component_load('__viewapi');  
 
 define( "my_load" , my_token() );
