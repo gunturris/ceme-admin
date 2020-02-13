@@ -385,10 +385,10 @@ function my_get_path_files(){
 require_once( '/var/www/html/ceme-admin/settings/api.database.php' );
  
 my_component_load('__system');
-exit;
+
 var_dump(__DIR__ . '/config.php');
  
-my_component_load('__viewapi');  
-
-define( "my_load" , my_token() );
+//my_component_load('__viewapi');  
+exit;
+//define( "my_load" , my_token() );
   
