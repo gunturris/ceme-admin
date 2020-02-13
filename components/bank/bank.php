@@ -3,7 +3,7 @@ my_component_load('__jsload' , false);
 my_component_load('__paging' , false);  
 my_component_load('bank' );
 
-require_once(__DIR__ .'/custom.bank.php');
+var_dump(__DIR__ .'/custom.bank.php');
 
 $task = isset($_GET['task']) ? $_GET['task'] : ''; 
 $id = isset( $_GET['id'] ) ? $_GET['id']:  0;
