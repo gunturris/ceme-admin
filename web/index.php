@@ -1,9 +1,9 @@
 <?php 
 var_dump("AAAAAAA");
-var_dump(__DIR__ . "/../config.php");
+require_once( "../config.php");
 var_dump("BBBBBB");
 $_GET['com'] = isset($_GET['com']) ? $_GET['com'] : DEFAULT_WEB_URL ;
-
+var_dump("CCCC");
 /* 
 if(! isset($_SESSION['user_id'])){
 	my_direct('login.php');
@@ -11,6 +11,7 @@ if(! isset($_SESSION['user_id'])){
 */
  
 if( ! my_is_component( $_GET['com'] ) ){
+    var_dump("DDDDD");
 	fatal_error('Module utama tidak ditemukan');
 }  
  
