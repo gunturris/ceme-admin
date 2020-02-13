@@ -17,18 +17,7 @@ function is_time_format($time){
     return preg_match('#^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$#', $time);
 }
 
-
-function get_emp_by_nik_name($nik){
-    $query = "SELECT * FROM emp WHERE nik = '{$nik}' ";
-    $result = my_query($query);
-    if( my_num_rows($result) > 0 ){
-        $row = my_fetch_array($result);
-        return $row;
-    }
-    return false;
-}
-//End new function
-
+ 
 function symbol_breadcumb(){
 	return '&nbsp; '.button_icon( 'b_nextpage.png' ,array() ).' &nbsp; ';
 }
@@ -453,13 +442,7 @@ function my_set_code_js_jquery($code){
 	return $js_jquery_code;
 }
   
-
-function load_data_system_code($table , $code , $field = 'system_code'){
-	$query = "SELECT * FROM {$table} WHERE {$field} = '{$code}'"; 
-	$res = my_query($query);
-	return my_fetch_array($res);
-} 
-
+ 
 function rupiah_terbilang($x)
 {
   $abil = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
@@ -605,27 +588,10 @@ function jam_formulir($name , $value){
 	$text .= '</select>';
 	return $text;
 }
-
-function get_karyawan_id_by_nik_name($label){
-	$t =  explode("/" , $label); 
-	if( count($t) == 1 )return 0;
-	list($nik ,$name) = explode("/" , $label);
-	$query = "SELECT karyawan_id FROM karyawan WHERE nik ='{$nik}' LIMIT 1";
-	$result = my_query($query);
-	$row = my_fetch_array($result);
-	return $row['karyawan_id'];
-}
-
-
+ 
 function rp_format($number){
 	return  number_format( (int) $number, 0,
 	',',
 	'.') ;
 }
-
-function get_periode_aktif(){
-	$query = "SELECT * FROM global_periode WHERE is_aktif = 'Y' LIMIT 1";
-	$result = my_query($query);
-	$row = my_fetch_array($result);
-	return $row;
-}
+ 
