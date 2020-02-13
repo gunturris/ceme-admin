@@ -49,3 +49,4 @@ function button_icon( $icon , $urlproperty = false , $buttonproperty=false ){
 	if($urlproperty) $view .='</a>';
 
 	return $view;
+}
