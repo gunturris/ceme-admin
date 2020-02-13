@@ -370,14 +370,12 @@ function my_direct( $page  ){
 
 function my_get_path_files(){
 	return MY_FILES_PATH;
-});
+}
  
 my_component_load('__system');
  
 my_component_load('__viewapi');  
-
+my_api_load(); 
 define( "my_load" , my_token() );
  
 var_dump($_SERVER);
-my_api_load(); 
-var_dump($_GET);         
