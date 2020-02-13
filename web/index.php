@@ -1,6 +1,6 @@
 <?php 
 var_dump("AAAAAAA");
-require_once(__DIR__ . "/../config.php");
+var_dump(__DIR__ . "/../config.php");
 var_dump("BBBBBB");
 $_GET['com'] = isset($_GET['com']) ? $_GET['com'] : DEFAULT_WEB_URL ;
 
