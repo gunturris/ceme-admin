@@ -126,7 +126,7 @@ function my_api_load(){
     var_dump($sets);
     // require_once( '/var/www/html/ceme-admin/settings/api.form.php' );
     var_dump("***************************************");
-    // require_once( '/var/www/html/ceme-admin/settings/api.table.php' );
+     require_once( '/var/www/html/ceme-admin/settings/api.table.php' );
     var_dump("++++++++++++++++++++++++");
      require_once( '/var/www/html/ceme-admin/settings/api.permission.php' );
     var_dump("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
