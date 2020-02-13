@@ -125,10 +125,10 @@ function my_api_load(){
 	$sets = get_api_file_list('settings');
      
 	foreach( $sets as $filename ){
-        var_dump($filename);
+         
 		if($filename != "setting.php"){ 
           print(MY_ROOT_PATH . $filename);    
-		  require_once( MY_ROOT_PATH . $filename );
+		  //require_once( MY_ROOT_PATH . $filename );
         }
 	}
 }
