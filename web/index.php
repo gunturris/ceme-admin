@@ -1,5 +1,5 @@
 <?php 
-var_dump("AAAAAAA");
+ini_set("diplay_errors" , 1);
 require_once( "../config.php");
 var_dump("BBBBBB");
 $_GET['com'] = isset($_GET['com']) ? $_GET['com'] : DEFAULT_WEB_URL ;
