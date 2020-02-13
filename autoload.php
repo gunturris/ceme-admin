@@ -103,8 +103,7 @@ function get_api_file_list( $folder ){
 	fatal_error( 'File dalam folder core '.$folder.' tidak dapat di ambil!' ); 
 
 }  
-
-var_dump($_GET);
+ 
   
 if( class_exists("mysqli") ){ 
 	$connection = new mysqli(DATABASE_HOST ,DATABASE_USER , DATABASE_PASSWORD, DATABASE_NAME);
@@ -119,8 +118,6 @@ if( class_exists("mysqli") ){
 	}
 }	
 
-var_dump($_GET);
-exit;
 function my_api_load(){
 	 
 	$sets = get_api_file_list('settings');
@@ -234,7 +231,10 @@ function my_is_component( $component_name ){
 	if( file_exists($component_control) ) return true;
 	return false;
 }
- 
+
+
+var_dump($_GET);
+exit;
 /*RUN COMPONENT */
 function my_exec( $component_name ){
 	$component_control = MY_COMPONENT_PATH . $component_name . '/'.$component_name.'.php';
