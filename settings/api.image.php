@@ -1,5 +1,5 @@
 <?php
-
+/*
 function image_thumbnail( $resourse , $width , $height , $copy = false ){
 
 }
@@ -70,6 +70,6 @@ function image_get_info($file) {
 
   return $details;
 }
-
+*/
  
 ?>
