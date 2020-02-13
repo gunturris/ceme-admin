@@ -84,7 +84,7 @@ function get_api_file_list( $folder ){
 		fatal_error( 'Folder core '.$folder.' tidak ditemukan!' );
 	}
 	var_dump($PATH);
-    exit;
+    
 	if ($handle = opendir( $PATH )) {
 		
 		$files = array();
@@ -93,11 +93,13 @@ function get_api_file_list( $folder ){
              $filepath = $PATH .'/'. $file;
              $expfile = explode('.' , $file );
              $last_ext = end($expfile);
+            var_dump($last_ext);
 	         if( is_file( $filepath ) and ( $last_ext   == 'php'  ) )
                  $files[] = $folder.'/'.$file; 
 	    }
 		
-		closedir($handle); 
+		closedir($handle);
+        exit;
 		return $files;
 	}
 	
