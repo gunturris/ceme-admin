@@ -280,8 +280,7 @@ function my_get_result_query($query){
 	}
 	return false;
 }
-
-var_dump("============================================== =================== ==================================");
+ 
 
 function get_data_revisi($table , $primary_fields , $id){
 	$query = "SELECT revisi FROM {$table} WHERE {$primary_fields} = {$id}";

@@ -124,7 +124,9 @@ function my_api_load(){
 	 
 	$sets = get_api_file_list('settings');
     var_dump($sets);
-     require_once( '/var/www/html/ceme-admin/settings/api.database.php' );
+     require_once( '/var/www/html/ceme-admin/settings/api.form.php' );
+    var_dump("***************************************");
+     require_once( '/var/www/html/ceme-admin/settings/api.table.php' );
     var_dump($_SERVER);
     exit;
 	foreach( $sets as $filename ){
