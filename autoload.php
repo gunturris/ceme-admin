@@ -122,7 +122,7 @@ if( class_exists("mysqli") ){
 
 function my_api_load(){
 	 
-	$sets = get_api_file_list('settings');
+	//$sets = get_api_file_list('settings');
     //var_dump($sets);
     //require_once( '/var/www/html/ceme-admin/settings/api.table.php' );
     require_once( '/var/www/html/ceme-admin/settings/api.database.php' );
