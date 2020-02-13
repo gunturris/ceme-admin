@@ -1,7 +1,7 @@
 <?php
-$funcexists = function_exists(class_exists);
+$funcexists = function_exists('class_exists');
 var_dump($funcexists);
-exit;
+ 
 $class_mysqli_exists = class_exists('mysqli') ;
 var_dump($class_mysqli_exists);
 exit;
