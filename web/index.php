@@ -14,8 +14,8 @@ if(! isset($_SESSION['user_id'])){
 */
 
 $comp = my_is_component( $_GET['com'] ) ;
- var_dump($comp)
-     exit;
+ var_dump($comp);
+     exit;/*
 if( $comp ){
     var_dump("DDDDD");
      exit;
@@ -24,3 +24,4 @@ if( $comp ){
  
 var_dump($_GET);
 my_exec($_GET['com'] ); 
+*/
