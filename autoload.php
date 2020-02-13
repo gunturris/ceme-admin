@@ -123,6 +123,8 @@ if( class_exists("mysqli") ){
 function my_api_load(){
 	 
 	$sets = get_api_file_list('settings');
+    var_dump($sets);
+    exit;
 	foreach( $sets as $filename ){
         var_dump($filename);
 		if($filename != "setting.php"){ 
