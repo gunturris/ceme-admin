@@ -572,4 +572,10 @@ function dropdown_multi_rows_extends_dua( $parent , $child , $file_combo , $opsi
 	</select>' ;
 	return $vi;	
 }
- 
+
+
+function rp_format($number){
+	return  number_format( (int) $number, 0,
+	',',
+	'.') ;
+}
