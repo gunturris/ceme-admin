@@ -332,8 +332,6 @@ function my_token(){
 }
 
 
-var_dump($_GET);
-exit;
 function generate_facebox_template($content ,$sidebar=false , $template = "facebox.php" , $module= false){
 	if( $module && my_is_component( $module ) )	{
 		$template_path = MY_COMPONENT_PATH . $module . "/". $template;
@@ -372,10 +370,12 @@ function my_direct( $page  ){
 function my_get_path_files(){
 	return MY_FILES_PATH;
 }
-
+var_dump($_SERVER);
  
 my_component_load('__system');
  
+var_dump($_GET);
+exit;
 my_component_load('__viewapi');  
 my_api_load(); 
 define( "my_load" , my_token() );
