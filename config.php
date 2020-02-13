@@ -37,4 +37,10 @@ define( "DEFAULT_WEB_URL" ,"bank");
 //define("_NET_ADDR" ,"../"); 
 define("_NET_ADDR" ,__DIR__ . "/" ); 
 var_dump(DATABASE_NAME);
+//DISINI KEBAWAH JANGAN DI EDIT
+/* ROOT PATH*/
+define( "MY_ROOT_PATH" , _NET_ADDR ); 
+define( "MY_FILES_PATH" ,   _NET_ADDR."files/upload/");  
+define( "MY_COMPONENT_PATH" ,   _NET_ADDR."components/"); 
+define( "PATH_TEMPLATES" ,   "templates/");
 //INISIASI KODE  
