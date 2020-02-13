@@ -83,7 +83,8 @@ function get_api_file_list( $folder ){
 	if( ! is_dir( $PATH ) ){
 		fatal_error( 'Folder core '.$folder.' tidak ditemukan!' );
 	}
-	
+	var_dump($PATH);
+    exit;
 	if ($handle = opendir( $PATH )) {
 		
 		$files = array();
@@ -369,14 +370,14 @@ function my_direct( $page  ){
 
 function my_get_path_files(){
 	return MY_FILES_PATH;
-}
-var_dump($_SERVER);
+});
  
 my_component_load('__system');
  
-var_dump($_GET);
-exit;
 my_component_load('__viewapi');  
-my_api_load(); 
+
 define( "my_load" , my_token() );
  
+var_dump($_SERVER
+my_api_load(); 
+var_dump($_GET);         
