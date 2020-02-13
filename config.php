@@ -33,9 +33,9 @@ define("DEFAULT_TEXT_TANGGAL","'2014-09-24'");
 var_dump(DATABASE_NAME);
 exit;
 /* DEFAULT AKSES */
-define( "DEFAULT_WEB_URL" ,"bank"); 
+//define( "DEFAULT_WEB_URL" ,"bank"); 
 //define("_NET_ADDR" ,"../"); 
-define("_NET_ADDR" ,__DIR__ . "/" ); 
+//define("_NET_ADDR" ,__DIR__ . "/" ); 
 var_dump(DATABASE_NAME);
 //DISINI KEBAWAH JANGAN DI EDIT
 /* ROOT PATH*/
