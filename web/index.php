@@ -7,6 +7,7 @@ var_dump("BBBBBB");
 $_GET['com'] = isset($_GET['com']) ? $_GET['com'] : DEFAULT_WEB_URL ;
 var_dump("CCCC");
 var_dump($_GET['com']);
+exit;
 /* 
 if(! isset($_SESSION['user_id'])){
 	my_direct('login.php');
