@@ -12,6 +12,7 @@ if(! isset($_SESSION['user_id'])){
 	my_direct('login.php');
 } 
 */
+exit;
 $comp = my_is_component( $_GET['com'] ) ;
 if( ! $comp ){
     var_dump("DDDDD");
