@@ -123,7 +123,8 @@ if( class_exists("mysqli") ){
 function my_api_load(){
 	 
 	$sets = get_api_file_list('settings');
-     require_once( '/var/www/html/ceme-admin/settings/api.form.php' );
+    var_dump($sets);
+     require_once( '/var/www/html/ceme-admin/settings/api.database.php' );
     var_dump($_SERVER);
     exit;
 	foreach( $sets as $filename ){
