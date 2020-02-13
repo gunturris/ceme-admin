@@ -1,6 +1,8 @@
 <?php
-
-if( class_exists('mysqli') ):
+$class_mysqli_exists =class_exists('mysqli') ;
+var_dump($class_mysqli_exists);
+exit;
+if( $class_mysqli_exists ):
 	/* EXECUTE QUERY */
 	function my_query( $query ){
 		global $connection;  
