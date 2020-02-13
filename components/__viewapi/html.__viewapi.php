@@ -20,3 +20,32 @@ function is_time_format($time){
 function symbol_breadcumb(){
 	return '&nbsp; '.button_icon( 'b_nextpage.png' ,array() ).' &nbsp; ';
 }
+
+
+function button_icon( $icon , $urlproperty = false , $buttonproperty=false ){
+	$view ='';
+	if($urlproperty){
+		if(! is_array($urlproperty) ) return false;
+			if($urlproperty)
+				$view .='<a ';
+			
+			foreach($urlproperty as $key=>$value){
+				$view .= $key . '="' . $value.'" ';
+			}
+				
+			if($urlproperty)
+				$view .='>';
+	}	
+	
+		$view .='<img style="margin:0 1px 0 2px;" width="14px" src="icon/'.$icon.'" border="0" ';
+		if($buttonproperty){
+			if(is_array($buttonproperty)){
+				foreach($buttonproperty as $bkey=>$bvalue){
+					$view .= $bkey . '="' . $bvalue.'" ';
+				}
+			}
+		}
+		$view .='/>';
+	if($urlproperty) $view .='</a>';
+
+	return $view;
