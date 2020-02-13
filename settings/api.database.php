@@ -168,8 +168,7 @@ function my_type_data_int($val){
 
 /*
 	DELETE DATA ON TABLE
-*/
-var_dump("-+-=-+-= = = =  = = = == = = = = = = = = = == = =");
+*/ 
 function my_delete_record( $table_name , $field_key , $data_id){
 	global $connection;	
 	
