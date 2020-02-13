@@ -169,7 +169,7 @@ function my_type_data_int($val){
 /*
 	DELETE DATA ON TABLE
 */
-
+var_dump("-+-=-+-= = = =  = = = == = = = = = = = = = == = =")
 function my_delete_record( $table_name , $field_key , $data_id){
 	global $connection;	
 	
@@ -281,13 +281,3 @@ function my_get_result_query($query){
 	return false;
 }
  
-
-function get_data_revisi($table , $primary_fields , $id){
-	$query = "SELECT revisi FROM {$table} WHERE {$primary_fields} = {$id}";
-	$result = my_query($query);
-	if( my_num_rows($result) > 0){
-		$row = my_fetch_array($result);
-		return $row['revisi'];
-	}
-	return 1;
-}
