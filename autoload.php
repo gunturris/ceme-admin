@@ -243,8 +243,11 @@ function my_callback( $strtoreplace , $template ){
 /* GET COMPONENT HOST */
 function my_http_host(){
 	$webhost = $_SERVER['HTTP_HOST'];
-	return "http://".$webhost."/web";
-	//return "http://".$webhost."/ceme-admin/web";
+	//return "http://".$webhost."/web";
+    if( $webhost== 'prsi.online' )
+	   return "http://".$webhost."/cm-demo/web";
+    else
+	   return "http://".$webhost."/ceme-admin/web";
 }
 
 /* LOAD JS CSS */
