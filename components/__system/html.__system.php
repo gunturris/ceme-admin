@@ -13,6 +13,20 @@ function error_no($message , $flag = true ){
 
 }
 
+function message_error($message){
+
+return '<div style="color:red;border:1px solid red;padding:4px" class="error-line">' . $message . '</div><br/>';
+}
+
+function message_multi_error($messages){
+	if(! is_array($messages) ) return false;
+		$show ='<span class="notification n-error" style="line-height:24px;"> ';
+			foreach( $messages as $message ): 
+				$show .= "- ". $message."<br />";
+			endforeach; 
+		$show .=' </span>';
+	return $show; 
+}
 
 function get_config_data($name){
 	$name = strtoupper($name);
@@ -123,7 +137,29 @@ function clean_input($string){
 	return trim(addslashes($string));
 }
  
- 
+
+/*File size by folder */
+function folder_file_info( $folder_id ){
+	
+	$cekfolerbyid = " SELECT dokumen_id FROM dokumen WHERE folder_id =". $folder_id ;
+	$result = my_query( $query );
+	
+	$data = aray();
+	$data['filesize'] = 0;
+	$data['filecount'] = 0;
+	while( $row = my_fetch_array($result) ){
+	
+		$datas = dokumen_file_info( $row['dokumen_id'] );
+		
+		$filecount[] = $datas['filecount'];
+		$filesize[] = $datas['filesize'];
+	}
+	
+	$data['filesize'] = array_sum( $filesize  ) ;
+	$data['filecount'] = array_sum( $filecount  );
+	
+	return $data;
+}
 
 function button_top($buttons){
  
@@ -235,7 +271,21 @@ function get_hari_by_date($date){
 	$d = date( 'w', strtotime( $date ) );
 	return $hari[$d];
 }
- 
+
+function get_value($label){
+	$uquery = "SELECT setvalue FROM applicatin_set WHERE setname='{$label}'";
+	$result = my_query($uquery);
+	if($row = my_fetch_array($result));
+	
+	return $row['setvalue'];
+	
+	return false;
+}
+
+function set_value($label , $value){ 
+	$query = "UPDATE applicatin_set SET setvalue='{$value}' WHERE setname ='{$label}'";
+	return my_query($query);
+}
 
 function generate_code($len  , $table , $id = ID_SITE ){
 	if($len > 10)$len = 10;
@@ -246,4 +296,38 @@ function generate_code($len  , $table , $id = ID_SITE ){
 	$start = rand(0,6); 
 	$new_code = $id.substr( $code, $start , $len  );
 	return generate_check_code($table ,$new_code); 
-} 
+}
+
+function generate_check_code($table , $code){
+
+	$query = "SELECT * FROM {$table} WHERE system_code = '{$code}'";
+	$result = my_query($query);
+		if( my_num_rows($result) > 0){
+			return generate_check_code($table , $code);
+		}
+	 
+	return $code;
+}
+
+function get_sedang_dikerjakan(){
+	$query = "SELECT * FROM registrasi	a
+		INNER JOIN registrasi_paket b ON a.registrasi_id = b.registrasi_id 
+		INNER JOIN registrasi_paket_pelayanan c ON c.registrasi_paket_id = b.registrasi_paket_id
+		WHERE a.tanggal_datang = DATE(NOW()) 
+			AND a.cabang_id = {$_SESSION['cabang_id']} 
+			AND c.closed = 'N' ";
+	$result = my_query($query); 
+	return my_num_rows($result);
+}
+
+function get_sedang_antri(){
+	$query = "SELECT * FROM registrasi	a
+		INNER JOIN registrasi_paket b ON a.registrasi_id = b.registrasi_id 
+		LEFT JOIN registrasi_paket_pelayanan c ON c.registrasi_paket_id = b.registrasi_paket_id
+		WHERE a.tanggal_datang = DATE(NOW()) 
+			AND a.cabang_id = {$_SESSION['cabang_id']} 
+			AND c.kursi_id is NULL";
+	$result = my_query($query); 
+	return my_num_rows($result);
+}	
+ 

@@ -5,11 +5,10 @@ if( ! is_dir( MY_FILES_PATH ) ){
 }
 
 */
-ini_set("display_errors" , 1); 
-ini_set("memory_limit" , "32MB");
+
 ini_set('allow_call_time_pass_reference',"0");
 session_start(); 
-require_once(__DIR__ . '/config.php'); 
+ 
 
 function fatal_error( $msg  ){
  
@@ -19,23 +18,6 @@ function fatal_error( $msg  ){
 	exit;
 
 }
-
-
-function message_error($message){
-
-return '<div style="color:red;border:1px solid red;padding:4px" class="error-line">' . $message . '</div><br/>';
-}
-
-function message_multi_error($messages){
-	if(! is_array($messages) ) return false;
-		$show ='<span class="notification n-error" style="line-height:24px;"> ';
-			foreach( $messages as $message ): 
-				$show .= "- ". $message."<br />";
-			endforeach; 
-		$show .=' </span>';
-	return $show; 
-}
-
 
 function my_link_control( $param , $value , $show = false ){
 	$replace = false;
@@ -82,8 +64,8 @@ function get_api_file_list( $folder ){
   
 	if( ! is_dir( $PATH ) ){
 		fatal_error( 'Folder core '.$folder.' tidak ditemukan!' );
-	} 
-    
+	}
+	
 	if ($handle = opendir( $PATH )) {
 		
 		$files = array();
@@ -92,21 +74,18 @@ function get_api_file_list( $folder ){
              $filepath = $PATH .'/'. $file;
              $expfile = explode('.' , $file );
              $last_ext = end($expfile);
-             
 	         if( is_file( $filepath ) and ( $last_ext   == 'php'  ) )
                  $files[] = $folder.'/'.$file; 
 	    }
 		
-		closedir($handle);
-         
+		closedir($handle); 
 		return $files;
 	}
 	
 	fatal_error( 'File dalam folder core '.$folder.' tidak dapat di ambil!' ); 
 
 }  
- 
-  
+
 if( class_exists("mysqli") ){ 
 	$connection = new mysqli(DATABASE_HOST ,DATABASE_USER , DATABASE_PASSWORD, DATABASE_NAME);
 	if( mysqli_connect_errno() ){
@@ -122,26 +101,18 @@ if( class_exists("mysqli") ){
 
 function my_api_load(){
 	 
-	//$sets = get_api_file_list('settings');
-    //var_dump($sets);
-    //require_once( '/var/www/html/ceme-admin/settings/api.table.php' );
-    require_once( '/var/www/html/ceme-admin/settings/api.database.php' );
-    //var_dump("***************************************");
-    
-    //require_once( '/var/www/html/ceme-admin/settings/api.form.php' );
-    //var_dump("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-    
-    //var_dump("++++++++++++++++++++++++");
-    //require_once( '/var/www/html/ceme-admin/settings/api.permission.php' );
-     
-	 
+	$sets = get_api_file_list('settings');
+	foreach( $sets as $filename ){
+		if($filename != "setting.php")
+		require_once( MY_ROOT_PATH . $filename );
+	}
 }
 
 /* COMPONENT LOAD */
 function my_component_load( $component_name , $run = true , $files = array() ){
 
 	$component_path = MY_COMPONENT_PATH . $component_name;
-    var_dump($component_path);
+
 	if( ! is_dir($component_path) ){
 		fatal_error( 'Tidak ditemukan component ' . $component_name ); 
 	}
@@ -237,13 +208,11 @@ function my_template_position(){
 
 function my_is_component( $component_name ){
 	$component_control = MY_COMPONENT_PATH . $component_name . '/'.$component_name.'.php';
-    var_dump($component_control);
-     
+	  
 	if( file_exists($component_control) ) return true;
 	return false;
 }
-
-
+ 
 /*RUN COMPONENT */
 function my_exec( $component_name ){
 	$component_control = MY_COMPONENT_PATH . $component_name . '/'.$component_name.'.php';
@@ -274,8 +243,8 @@ function my_callback( $strtoreplace , $template ){
 /* GET COMPONENT HOST */
 function my_http_host(){
 	$webhost = $_SERVER['HTTP_HOST'];
-	//return "http://".$webhost."/web";
-	return "http://".$webhost."/ceme-admin/web";
+	return "http://".$webhost."/web";
+	//return "http://".$webhost."/ceme-admin/web";
 }
 
 /* LOAD JS CSS */
@@ -382,11 +351,9 @@ function my_get_path_files(){
 	return MY_FILES_PATH;
 }
 
-require_once( '/var/www/html/ceme-admin/settings/api.database.php' );
+my_component_load('__system');
+my_component_load('__viewapi');  
+my_api_load(); 
+define( "my_load" , my_token() );
  
-my_component_load('__system' , false);
  
-my_component_load('__viewapi' , false);  
- 
-//define( "my_load" , my_token() );
-  

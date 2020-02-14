@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 
 //New Function
 function get_range_date_of_month($year , $month){
@@ -12,15 +13,25 @@ function get_range_date_of_month($year , $month){
 }
 
 
-
 function is_time_format($time){
     return preg_match('#^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$#', $time);
 }
- 
+
+
+function get_emp_by_nik_name($nik){
+    $query = "SELECT * FROM emp WHERE nik = '{$nik}' ";
+    $result = my_query($query);
+    if( my_num_rows($result) > 0 ){
+        $row = my_fetch_array($result);
+        return $row;
+    }
+    return false;
+}
+//End new function
+
 function symbol_breadcumb(){
 	return '&nbsp; '.button_icon( 'b_nextpage.png' ,array() ).' &nbsp; ';
 }
-
 
 function button_icon( $icon , $urlproperty = false , $buttonproperty=false ){
 	$view ='';
@@ -50,8 +61,6 @@ function button_icon( $icon , $urlproperty = false , $buttonproperty=false ){
 
 	return $view;
 }
-
-
 function big_button_icon( $icon , $urlproperty = false , $buttonproperty=false ){
 	$view ='';
 	if($urlproperty){
@@ -113,7 +122,6 @@ function button_icon_besar( $icon , $urlproperty = false , $buttonproperty=false
 function hari_kerja_lembur($karyawan_id , $date){
 	return false;
 }
-
 
 function is_hari_libur($date){
 
@@ -360,7 +368,6 @@ function detail_header_view(  $label , $fields = array() ,$navigasi = false){
 	return $viewed;
 }
 
-
 function company_header_cetak($name){
 $viewed = ' 
 	<table width="780">
@@ -445,8 +452,7 @@ function my_set_code_js_jquery($code){
 	if(!defined('JS_JQUERY_CODE'))define('JS_JQUERY_CODE' , $code );
 	return $js_jquery_code;
 }
-
- 
+  
 
 function load_data_system_code($table , $code , $field = 'system_code'){
 	$query = "SELECT * FROM {$table} WHERE {$field} = '{$code}'"; 
@@ -572,10 +578,54 @@ function dropdown_multi_rows_extends_dua( $parent , $child , $file_combo , $opsi
 	</select>' ;
 	return $vi;	
 }
+ 
+
+function jam_formulir($name , $value){
+	$datas = array(); 
+	for( $i=0; $i<=23; $i++ ){
+		$n=0;
+		while($n <= 45){
+			$datas[] = sprintf('%02d',$i).':'. sprintf('%02d',$n);
+			$n +=  15;
+		}
+	} 
+	if(!$value){
+		$value = date('H').':00';
+	}else{
+		$value = substr($value,0,5);
+	} 
+	//$text = '<select name="'.$name.'"  scrolling="yes" multiple="multiple">';
+	$text = '<select name="'.$name.'"  scrolling="yes" >';
+	foreach($datas as $data){
+		if($value == $data)
+			$text .= '<option value="'.$data.'" selected >'.$data.'</option>'."\n";
+		else
+			$text .= '<option value="'.$data.'">'.$data.'</option>'."\n";
+	}
+	$text .= '</select>';
+	return $text;
+}
+
+function get_karyawan_id_by_nik_name($label){
+	$t =  explode("/" , $label); 
+	if( count($t) == 1 )return 0;
+	list($nik ,$name) = explode("/" , $label);
+	$query = "SELECT karyawan_id FROM karyawan WHERE nik ='{$nik}' LIMIT 1";
+	$result = my_query($query);
+	$row = my_fetch_array($result);
+	return $row['karyawan_id'];
+}
 
 
 function rp_format($number){
 	return  number_format( (int) $number, 0,
 	',',
 	'.') ;
+}
+
+function get_periode_aktif(){
+	$query = "SELECT * FROM global_periode WHERE is_aktif = 'Y' LIMIT 1";
+	$result = my_query($query);
+	$row = my_fetch_array($result);
+	return $row;
 }
