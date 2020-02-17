@@ -76,28 +76,123 @@ font-size: 16px;">  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">
                         </ul>
                     </li>
                     <li>
-                        <a  href="index.html"><i class="fa fa-bar-chart-o fa-2x"></i> Players stas<span class="fa arrow"></a>
+                        <a  href="index.html"><i class="fa fa-bar-chart-o fa-2x"></i> Statistics<span class="fa arrow"></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="index.php?com=statistics">Statistic</a>
+                                <a href="index.php?com=statistics&task=turn_over">High turn over</a>
                             </li>
                             <li>
-                                <a href="index.php?com=players">Players</a>
+                                <a href="index.php?com=statistics&task=high_winner">High winner</a>
                             </li>
                             <li>
-                                <a href="#">Devices</a>
+                                <a href="index.php?com=statistics&task=high_lose">High lose</a>
                             </li>
                             <li>
-                                <a href="#">Transactions</a>
+                                <a href="index.php?com=statistics&task=high_chip">High chip</a>
                             </li>
                             <li>
-                                <a href="#">Bots</a>
+                                <a href="index.php?com=statistics&task=deposit">Jumlah deposit</a>
                             </li>
                             <li>
-                                <a href="#">Agents</a>
+                                <a href="index.php?com=statistics&task=withdraw">Jumlah withdraw</a>
+                            </li>
+                            <li>
+                                <a href="index.php?com=statistics&task=buyin_megajackpot">Buy-in Mega Jackpot</a>
+                            </li>
+                            <li>
+                                <a href="index.php?com=statistics&task=payout_megajackpot">Payout Mega Jackpot</a>
+                            </li>
+                            <li>
+                                <a href="index.php?com=statistics&task=player_last_login">Login member</a>
+                            </li>
+                            <li>
+                                <a href="index.php?com=statistics&task=player_active">Active member</a>
+                            </li>
+                            <li>
+                                <a href="index.php?com=statistics&task=player_new_register">New Register Member</a>
+                            </li>
+                            <li>
+                                <a href="index.php?com=statistics&task=withdraw">Search Player</a>
+                            </li>
+                  
+                            
+                        </ul>
+                    </li>
+                            
+                    <li>
+                        <a  href="index.html"><i class="fa fa-compress fa-2x"></i> Accounting<span class="fa arrow"></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="index.php?com=acounting_game">Game</a>
+                            </li>
+                            <li>
+                                <a href="index.php?com=acounting_free_jackpot">Free jackpot</a>
+                            </li> 
+                            <li>
+                                <a href="index.php?com=acounting_mega_jackpot">Mega jackpot</a>
+                            </li>
+                            <li>
+                                <a href="index.php?com=acounting_bonus">Bonus</a>
+                            </li>
+                            <li>
+                                <a href="index.php?com=acounting_referal">Referal</a>
+                            </li> 
+                            <li>
+                                <a href="index.php?com=acounting_bot">Bot</a>
                             </li>
                         </ul>
-                    </li>					
+                    </li>	   
+                    <li>
+                        <a  href="index.html"><i class="fa fa-compress fa-2x"></i> Transactions<span class="fa arrow"></a>
+                        <ul class="nav nav-second-level">
+                            <!-- li>
+                                <a href="index.php?com=statistics">Statistic</a>
+                            </li -->
+                            <li>
+                                <a href="index.php?com=deposit">Deposit</a>
+                            </li> 
+                            <li>
+                                <a href="index.php?com=withdraw">Withdraw</a>
+                            </li>
+                            <li>
+                                <a href="#">Manual transaction</a>
+                            </li>
+                            <li>
+                                <a href="#">History transaction</a>
+                            </li> 
+                            <li>
+                                <a href="#">Limit settings</a>
+                            </li>
+                        </ul>
+                    </li>	
+                            
+                    <li>
+                        <a  href="index.html"><i class="fa fa-user fa-2x"></i> Players<span class="fa arrow"></a>
+                        <ul class="nav nav-second-level">
+                            <!-- li>
+                                <a href="index.php?com=statistics">Statistic</a>
+                            </li -->
+                            <li>
+                                <a href="index.php?com=players">Registered players</a>
+                            </li> 
+                            <li>
+                                <a href="index.php?com=players_transaction">Player transaction</a>
+                            </li>
+                            <li>
+                                <a href="#">Validation</a>
+                            </li>
+                            <li>
+                                <a href="#">History Validation</a>
+                            </li>
+                            <li>
+                                <a href="#">Forget Password</a>
+                            </li>
+                            <li>
+                                <a href="#">History Forget Password</a>
+                            </li>
+                        </ul>
+                    </li>	
+                        <?php /*
                     <li>
                         <a  href="index.html"><i class="fa fa-list-alt fa-2x"></i> Leagues<span class="fa arrow"></a>
                         <ul class="nav nav-second-level">
@@ -108,7 +203,8 @@ font-size: 16px;">  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">
                                 <a href="index.php?com=league_venues">Venues</a>
                             </li>
                         </ul>
-                    </li>			
+                    </li>		
+                        */ ?>
                     <li>
                         <a  href="index.html"><i class="fa fa-anchor fa-2x"></i> Tournaments<span class="fa arrow"></a>
                         <ul class="nav nav-second-level">
