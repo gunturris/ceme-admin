@@ -311,6 +311,16 @@ function form_field_display( $form , $label , $bgcolor ="" , $merge=false,$reque
     </div>';
 	return $view;
 }
+function form_field_display_header( $form , $label , $bgcolor ="" , $merge=false,$request = false ){
+	 
+	  
+    $view = '
+    <div class="form-group input-group" >
+      <span class="input-group-addon" style="width:110px;margin-right:5px;">'.$label.'</span>
+       <span style="width:90px;margin-left:10px;">'.$form .'</span>
+    </div>';
+	return $view;
+}
 function form_field_display_three( $form , $label ,  $nilai ,$merge = false  ){
 	if($merge)
 	$view  ='

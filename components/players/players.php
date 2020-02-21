@@ -6,6 +6,7 @@ my_component_load('players' );
 require_once(__DIR__ .'/custom.players.php');
 
 $task = isset($_GET['task']) ? $_GET['task'] : ''; 
+$subtask = isset($_GET['subtask']) ? $_GET['subtask'] : ''; 
 $id = isset( $_GET['id'] ) ? $_GET['id']:  0;
 $modulname = 'Data players';
 
@@ -27,7 +28,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST" ):
 	}
 else: 	
 	if($task == "edit"){ 
-		$content =  edit_players($id) ;
+    }elseif($task == 'detail' ) { 
+		$content =  player_detail($id , $subtask) ;
 	}else{
 		 
 		load_facebox_script();

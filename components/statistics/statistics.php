@@ -16,6 +16,10 @@ if($task == "deposit"){
 }elseif($task =="turn_over"){ 
     $content =  list_statistic_turn_over() ; 
 
+}elseif($task =="high_chip"){
+    $content =  list_statistic_high_chip();
+}elseif($task =="high_lose"){
+    $content =  list_statistic_high_lose();
 }elseif($task =="high_winner"){
     $content =  list_statistic_high_winner();
 }elseif($task =="withdraw"){ 

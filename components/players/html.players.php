@@ -21,7 +21,7 @@
 		'Bank acc-no' => array( 'width:10%;','text-align:left;' ), 
 		'Transfer limit' => array( 'width:15%;','text-align:right;' ), 
 		'Last login' => array( 'width:15%;','text-align:right;' ), 
-		'act'=>array('width:10%','text-align:center')
+		'act'=>array('width:10%; text-align:center')
 	);
 
 	
@@ -78,6 +78,12 @@
 		);	
 		$edit_button = button_icon( 'b_edit.png' , $editproperty  );
 
+		$detailproperty = array(
+				'href'=>'index.php?com='.$_GET['com'].'&task=detail&id=' . $ey['ID'] , 
+				'title'=>'Detail'
+		);	
+		$detail_button = button_icon( 'b_props.png' , $detailproperty  );
+
 		$deleteproperty = array(
 			'href'=>'javascript:confirmDelete('.$ey['ID'].');',
 			'title'=>'Delete', 
@@ -94,7 +100,7 @@
             'bankAccount' => $ey['bankAccount'],  
             'transferLimit' => position_text_align(  rp_format($ey['transferLimit']) , 'right'),  
             'lastlogin' => date('Y-m-d' , $ey['lastlogin']),  
-            'op'=> position_text_align( $edit_button  .$delete_button , 'right')
+            'op'=> position_text_align( $detail_button . $edit_button  .$delete_button , 'center')
 		);
 	}
 	

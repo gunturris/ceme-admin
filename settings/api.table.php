@@ -144,10 +144,10 @@ function header_box( $label , $navigasi ){
 	$view = '
     
     <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                      '.$label.'
                     </div>
-                    <div class="col-md-6" style="text-align:right;">
+                    <div class="col-md-9" style="text-align:right;">
                       ';
     
     foreach($navigasi as $button){
