@@ -112,7 +112,42 @@ font-size: 16px;">  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">
                     </li>
                             
                     <li>
-                        <a  href="index.html"><i class="fa fa-compress fa-2x"></i> Accounting<span class="fa arrow"></a>
+                        <a  href="index.html"><i class="fa fa-gamepad fa-2x"></i> Games management<span class="fa arrow"></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="index.php?com=texas_games">Table</a>
+                            </li>
+                            <li>
+                                <a href="#">Bot</a>
+                            </li> 
+                            <li>
+                                <a href="index.php?com=texas_group">Grouping</a>
+                            </li>
+                            <li>
+                                <a href="#">Monitoring</a>
+                            </li>
+                            <li>
+                                <a href="#">Agent</a>
+                            </li>  
+                        </ul>
+                    </li>
+                    <li>
+                        <a  href="index.html"><i class="fa fa-anchor fa-2x"></i> Tournaments<span class="fa arrow"></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="index.php?com=tournaments">Tournaments</a>
+                            </li>
+                            <li>
+                                <a href="index.php?com=tournament_structure">Structure</a>
+                            </li>
+                            <li>
+                                <a href="index.php?com=tournament_payout">Payout</a>
+                            </li>
+                        </ul>
+                    </li>		 
+                        
+                    <li>
+                        <a  href="index.html"><i class="fa fa-book fa-2x"></i> Accounting<span class="fa arrow"></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="#">Game</a>
@@ -212,21 +247,7 @@ font-size: 16px;">  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">
                             </li>
                         </ul>
                     </li>		
-                        
-                    <li>
-                        <a  href="index.html"><i class="fa fa-anchor fa-2x"></i> Tournaments<span class="fa arrow"></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="index.php?com=tournaments">Tournaments</a>
-                            </li>
-                            <li>
-                                <a href="index.php?com=tournament_structure">Structure</a>
-                            </li>
-                            <li>
-                                <a href="index.php?com=tournament_payout">Payout</a>
-                            </li>
-                        </ul>
-                    </li>			
+                        		
                     <li>
                         <a  href="index.html"><i class="fa fa-picture-o fa-2x"></i> Texas Poker Games<span class="fa arrow"></a>
                         <ul class="nav nav-second-level">

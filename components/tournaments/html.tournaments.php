@@ -19,13 +19,13 @@
 		'Start time' => array( 'style'=>'width:5%;text-align:left;' ), 
 		'Buy in' => array( 'style'=>'width:5%;text-align:left;' ), 
 		'Entry fee' => array( 'style'=>'width:5%;text-align:left;' ), 
-		'Min. players' => array( 'style'=>'width:10%;text-align:left;' ), 
-		'Max. players' => array( 'style'=>'width:10%;text-align:left;' ), 
-		'Rebuys' => array( 'style'=>'width:5%;text-align:left;' ), 
-		'Late entry' => array( 'style'=>'width:10%;text-align:left;' ), 
-		'StrcID' => array( 'style'=>'width:5%;text-align:left;' ), 
-		'Sts' => array( 'style'=>'width:5%;text-align:left;' ), 
-		'act'=>array('width:5%','text-align:center')
+		'Min. players' => array( 'style'=>'width:10%;text-align:center;' ), 
+		'Max. players' => array( 'style'=>'width:10%;text-align:center;' ), 
+		'Rebuys' => array( 'style'=>'width:5%;text-align:center;' ), 
+		'Late entry' => array( 'style'=>'width:10%;text-align:center;' ), 
+		'StrcID' => array( 'style'=>'width:5%;text-align:center;' ), 
+		'Sts' => array( 'style'=>'width:10%;text-align:center;' ), 
+	//	'act'=>array('width:5%','text-align:center')
 	);
 
 	
@@ -101,7 +101,7 @@
 		'lateEntry' => position_text_align($ey['lateEntry'],  'center'),
 		'structureId' => position_text_align( $ey['structureId'],  'center'),
 		'status' => position_text_align( $ey['status'],  'center'),
-				'op'=> position_text_align( $edit_button  .$delete_button , 'right')
+		//		'op'=> position_text_align( $edit_button  .$delete_button , 'right')
 		);
 	}
 	

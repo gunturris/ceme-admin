@@ -20,12 +20,13 @@ if($task == "deposit"){
     require_once( __DIR__ . '/turn_over.statistics.php');
     $content =  list_statistic_turn_over() ; 
 
-<<<<<<< HEAD
+ 
 }elseif($task =="high_chip"){
     $content =  list_statistic_high_chip();
+    
 }elseif($task =="high_lose"){
     $content =  list_statistic_high_lose();
-=======
+ 
 }elseif($task =="high_lose"){
     $modulname = 'Statistics - High lose';
     require_once( __DIR__ . '/high_lose.statistics.php');
@@ -35,8 +36,7 @@ if($task == "deposit"){
     $modulname = 'Statistics - High chip';
     require_once( __DIR__ . '/high_chip.statistics.php'); 
     $content = list_statistic_high_chip();
-    
->>>>>>> 9df1d83e2877a8e11051ba1fecb65652711211b3
+     
 }elseif($task =="high_winner"){
     $modulname = 'Statistics - High winner';
     require_once( __DIR__ . '/high_winner.statistics.php');
@@ -66,6 +66,11 @@ if($task == "deposit"){
     $modulname = 'Statistics - Member new register';
     require_once( __DIR__ . '/players.statistics/new_register.php');
     $content =  list_statistic_new_register() ; 
+    
+}elseif($task =="player_active"){ 
+    $modulname = 'Statistics - Member active';
+    require_once( __DIR__ . '/players.statistics/player_active.php');
+    $content =  list_statistic_player_active() ; 
 
 }else{
 
