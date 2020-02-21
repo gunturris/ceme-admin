@@ -1,6 +1,6 @@
 <?php
 
-function list_acounting_game(){
+function list_transaction_deposit(){
     
     
 	my_set_code_js('

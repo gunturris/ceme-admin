@@ -1,6 +1,6 @@
 <?php
 
-function list_acounting_game(){
+function list_acounting_free_jackpot(){
     
     
 	my_set_code_js('
@@ -32,8 +32,8 @@ function list_acounting_game(){
         $dealer = my_get_data_by_id( 'dealer' , 'dealerId' , $ey['dealerId'] ); 
         $player = my_get_data_by_id( 'players' , 'ID' , $ey['playerId'] ); 
 		$row[] = array( 
-            'dealer'    => position_text_align($dealer['busname'], 'center' ),
-            'player'    => position_text_align($player['username'], 'center' ),
+            'dealer'    => position_text_align( $dealer['busname'], 'center' ),
+            'player'    => position_text_align( $player['username'], 'center' ),
             'trx'       => position_text_align( $ey['tranId'] , 'center' ),
             'bank'      => position_text_align( $ey['amount'] , 'left' ),
             'betamount' => position_text_align( rp_format($ey['amount']),  'right'),

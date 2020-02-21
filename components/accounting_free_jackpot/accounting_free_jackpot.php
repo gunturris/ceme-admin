@@ -1,7 +1,7 @@
 <?php
 my_component_load('__jsload' , false);
 my_component_load('__paging' , false);  
-my_component_load('accounting_game' );
+my_component_load('accounting_free_jackpot' );
  
 
 $task = isset($_GET['task']) ? $_GET['task'] : ''; 

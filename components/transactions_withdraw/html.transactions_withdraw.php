@@ -1,6 +1,6 @@
 <?php
 
-function list_acounting_game(){
+function list_transaction_withdraw(){
     
     
 	my_set_code_js('
@@ -19,11 +19,11 @@ function list_acounting_game(){
 		'Transaction' => array( 'style' => 'width:10%;text-align:right;' ),
 		'Bank' => array( 'style' => 'width:15%;text-align:right;' ),
 		'Amount' => array( 'style' => 'width:5%;text-align:right;' ),
-		'Message' => array( 'style' => 'width:30%;text-align:right;' ),
+		'Source' => array( 'style' => 'width:30%;text-align:right;' ),
         
 	);
     
-    $query 	= "SELECT * FROM debits WHERE approved=1 LIMIT 15";
+    $query 	= "SELECT * FROM credits WHERE valid=1 LIMIT 15";
     $result = my_query($query);
     
 	$row = array();
@@ -37,7 +37,7 @@ function list_acounting_game(){
             'trx'       => position_text_align( $ey['tranId'] , 'center' ),
             'bank'      => position_text_align( $ey['amount'] , 'left' ),
             'betamount' => position_text_align( rp_format($ey['amount']),  'right'),
-            'message'   => $ey['message'],  
+            'source'   => $ey['source'],  
 		);
 	}
 	

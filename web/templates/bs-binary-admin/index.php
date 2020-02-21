@@ -65,15 +65,7 @@ font-size: 16px;">  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">
 				
 					
                     <li>
-                        <a  href="index.html"><i class="fa fa-dashboard fa-2x"></i> Dashboard<span class="fa arrow"></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="index.php?com=bank">Banks</a>
-                            </li>
-                            <li>
-                                <a href="index.php?com=dealer_users">Users</a>
-                            </li>
-                        </ul>
+                        <a  href="index.php"><i class="fa fa-dashboard fa-2x"></i> Dashboard<span class="fa arrow"></a>
                     </li>
                     <li>
                         <a  href="index.html"><i class="fa fa-bar-chart-o fa-2x"></i> Statistics<span class="fa arrow"></a>
@@ -123,22 +115,22 @@ font-size: 16px;">  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">
                         <a  href="index.html"><i class="fa fa-compress fa-2x"></i> Accounting<span class="fa arrow"></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="index.php?com=acounting_game">Game</a>
+                                <a href="#">Game</a>
                             </li>
                             <li>
-                                <a href="index.php?com=acounting_free_jackpot">Free jackpot</a>
+                                <a href="#">Free jackpot</a>
                             </li> 
                             <li>
-                                <a href="index.php?com=acounting_mega_jackpot">Mega jackpot</a>
+                                <a href="#">Mega jackpot</a>
                             </li>
                             <li>
-                                <a href="index.php?com=acounting_bonus">Bonus</a>
+                                <a href="#">Bonus</a>
                             </li>
                             <li>
-                                <a href="index.php?com=acounting_referal">Referal</a>
+                                <a href="#">Referal</a>
                             </li> 
                             <li>
-                                <a href="index.php?com=acounting_bot">Bot</a>
+                                <a href="#">Bot</a>
                             </li>
                         </ul>
                     </li>	   
@@ -149,16 +141,16 @@ font-size: 16px;">  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">
                                 <a href="index.php?com=statistics">Statistic</a>
                             </li -->
                             <li>
-                                <a href="index.php?com=deposit">Deposit</a>
+                                <a href="index.php?com=transactions_deposit">Deposit</a>
                             </li> 
                             <li>
-                                <a href="index.php?com=withdraw">Withdraw</a>
+                                <a href="index.php?com=transactions_withdraw">Withdraw</a>
                             </li>
                             <li>
                                 <a href="#">Manual transaction</a>
                             </li>
                             <li>
-                                <a href="#">History transaction</a>
+                                <a href="index.php?com=transactions_withdraw">History transaction</a>
                             </li> 
                             <li>
                                 <a href="#">Limit settings</a>
@@ -191,7 +183,23 @@ font-size: 16px;">  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">
                                 <a href="#">History Forget Password</a>
                             </li>
                         </ul>
-                    </li>	
+                    </li>
+                        
+                    		
+                    <li>
+                        <a  href="index.html"><i class="fa fa-tags fa-2x"></i> Bank<span class="fa arrow"></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="index.php?com=bank">Set group</a>
+                            </li>
+                            <li>
+                                <a href="#">Set bank deposit</a>
+                            </li> 
+                            <li>
+                                <a href="#">Set bank withdraw</a>
+                            </li> 
+                        </ul>
+                    </li>     
                         <?php /*
                     <li>
                         <a  href="index.html"><i class="fa fa-list-alt fa-2x"></i> Leagues<span class="fa arrow"></a>
@@ -204,7 +212,7 @@ font-size: 16px;">  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">
                             </li>
                         </ul>
                     </li>		
-                        */ ?>
+                        
                     <li>
                         <a  href="index.html"><i class="fa fa-anchor fa-2x"></i> Tournaments<span class="fa arrow"></a>
                         <ul class="nav nav-second-level">
@@ -244,7 +252,7 @@ font-size: 16px;">  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">
                             </li> 
                         </ul>
                     </li> 
-					           
+					 */ ?>          
                     <li>
                         <a  href="index.html"><i class="fa fa-cog fa-2x"></i> Settings</a> 
                     </li>  
