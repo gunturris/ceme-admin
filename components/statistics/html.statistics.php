@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
 function list_statistic_turn_over(){
     global $box;
@@ -288,6 +289,9 @@ function list_statistic_buy_in_jackpot(){
 	return table_builder($headers , $datas , 9, false   ); 
 }
 
+=======
+ 
+>>>>>>> 9df1d83e2877a8e11051ba1fecb65652711211b3
 
 
 function statistic_header_box(){
