@@ -317,7 +317,7 @@ function form_field_display_header( $form , $label , $bgcolor ="" , $merge=false
     $view = '
     <div class="form-group input-group" >
       <span class="input-group-addon" style="width:110px;margin-right:5px;">'.$label.'</span>
-       <span style="width:90px;margin-left:10px;">'.$form .'</span>
+       <span>'.$form .'</span>
     </div>';
 	return $view;
 }

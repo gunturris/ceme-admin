@@ -17,8 +17,10 @@ if($task == "deposit"){
     
 }elseif($task =="turn_over"){  
     $modulname = 'Statistics - Turn over';
+    $player_id = isset($_GET['pid'] ) ? (int) $_GET['pid'] : 0;
+    $subtask = isset($_GET['subtask'] ) ?  trim($_GET['subtask'] ) : "";
     require_once( __DIR__ . '/turn_over.statistics.php');
-    $content =  list_statistic_turn_over() ; 
+    $content =  turn_over_tabs($player_id , $subtask );//list_statistic_turn_over() ; 
 
  
 }elseif($task =="high_chip"){
