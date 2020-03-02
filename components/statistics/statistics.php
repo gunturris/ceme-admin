@@ -20,19 +20,18 @@ if($task == "deposit"){
     $player_id = isset($_GET['pid'] ) ? (int) $_GET['pid'] : 0;
     $subtask = isset($_GET['subtask'] ) ?  trim($_GET['subtask'] ) : "";
     require_once( __DIR__ . '/turn_over.statistics.php');
-    $content =  turn_over_tabs($player_id , $subtask );//list_statistic_turn_over() ; 
+    $content =  turn_over_tabs($player_id , $subtask ); 
 
  
 }elseif($task =="high_chip"){
     $content =  list_statistic_high_chip();
-    
-}elseif($task =="high_lose"){
-    $content =  list_statistic_high_lose();
- 
+     
 }elseif($task =="high_lose"){
     $modulname = 'Statistics - High lose';
+    $player_id = isset($_GET['pid'] ) ? (int) $_GET['pid'] : 0;
+    $subtask = isset($_GET['subtask'] ) ?  trim($_GET['subtask'] ) : "";
     require_once( __DIR__ . '/high_lose.statistics.php');
-    $content = list_statistic_high_lose();
+    $content = high_lose_tabs($player_id , $subtask);
     
 }elseif($task =="high_chip"){
     $modulname = 'Statistics - High chip';
@@ -41,8 +40,10 @@ if($task == "deposit"){
      
 }elseif($task =="high_winner"){
     $modulname = 'Statistics - High winner';
+    $player_id = isset($_GET['pid'] ) ? (int) $_GET['pid'] : 0;
+    $subtask = isset($_GET['subtask'] ) ?  trim($_GET['subtask'] ) : "";
     require_once( __DIR__ . '/high_winner.statistics.php');
-    $content =  list_statistic_high_winner();
+    $content =  high_winner_tabs( $player_id , $subtask ); 
     
 }elseif($task =="buyin_megajackpot"){ 
     $modulname = 'Statistics - Buy in mega jackpot';

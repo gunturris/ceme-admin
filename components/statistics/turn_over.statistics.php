@@ -33,7 +33,7 @@ function list_statistic_turn_over( $player  = 0){
     }
     
     $query .= " group by DATE(ts) ORDER BY winAmount ASC LIMIT 15";
-    print($query);
+     
     $result = my_query($query);
     
 	$row = array();
@@ -53,15 +53,6 @@ function list_statistic_turn_over( $player  = 0){
 
 
 
-function players_total($criteria = false){
-    if(! $criteria ){
-        $query = "SELECT COUNT(*) AS total_datas FROM players";
-        $result = my_query($query);
-        $row = my_fetch_array($result);
-        return $row['total_datas'];
-    }
-    return 0;
-}
 
 function list_statistic_turn_over_player(){
     
@@ -163,7 +154,7 @@ function turn_over_tabs($player_id , $page){
     $view .= '<div class="col-md-6">';
     $view .= '<input type="hidden" name="com" value="'.$_GET['com'].'" />';
     $view .= '<input type="hidden" name="task" value="'.$_GET['task'].'" />';
-    $view .= '<input type="hidden" name="subtask" value="'.$_GET['subtask'].'" />';
+    $view .= '<input type="hidden" name="subtask" value="'.$page.'" />';
     if( isset($_GET['pid']) )
     $view .= '<input type="hidden" name="pid" value="'.$_GET['pid'].'" />';
     
