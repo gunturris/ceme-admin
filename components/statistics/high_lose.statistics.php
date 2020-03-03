@@ -105,10 +105,10 @@ function list_statistic_high_lose_player(){
 	while($ey = my_fetch_array($result)){ 
 
         $detail_button = '<a href="index.php?com='.$_GET['com'].'&task=high_lose&subtask=total&pid='.$ey['ID'].'">High lose</a>';
-         
+        $player_lose = player_lose($ey['ID']); 
 		$row[] = array( 
             'username' => position_text_align(  $ey['username'],   'left' ),
-            'winamount' => position_text_align( 'unknown',  'right') ,
+            'winamount' => position_text_align( $player_lose ,  'right') ,
             'turn over' => position_text_align( $detail_button ,  'right') ,
 		);
 	}
@@ -191,4 +191,12 @@ function high_lose_tabs($player_id , $page){
      
     return $view;
     
+}
+
+
+function player_lose($id){
+    $query = "SELECT 'unknown' AS dt_result ";
+    $result = my_query($query);
+    $row = my_fetch_array($result);
+    return $row['dt_result'];
 }

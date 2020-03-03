@@ -12,20 +12,18 @@ load_facebox_script();
 
 if($task == "deposit"){ 
     $modulname = 'Statistics - Deposit';
+    $player_id = isset($_GET['pid'] ) ? (int) $_GET['pid'] : 0;
+    $subtask = isset($_GET['subtask'] ) ?  trim($_GET['subtask'] ) : "";
     require_once( __DIR__ . '/deposit.statistics.php');
-    $content =  list_statistic_deposit() ;
+    $content =  deposit_tabs( $player_id , $subtask ) ;
     
 }elseif($task =="turn_over"){  
     $modulname = 'Statistics - Turn over';
     $player_id = isset($_GET['pid'] ) ? (int) $_GET['pid'] : 0;
     $subtask = isset($_GET['subtask'] ) ?  trim($_GET['subtask'] ) : "";
     require_once( __DIR__ . '/turn_over.statistics.php');
-    $content =  turn_over_tabs($player_id , $subtask ); 
-
+    $content =  turn_over_tabs( $player_id , $subtask ); 
  
-}elseif($task =="high_chip"){
-    $content =  list_statistic_high_chip();
-     
 }elseif($task =="high_lose"){
     $modulname = 'Statistics - High lose';
     $player_id = isset($_GET['pid'] ) ? (int) $_GET['pid'] : 0;
@@ -35,8 +33,10 @@ if($task == "deposit"){
     
 }elseif($task =="high_chip"){
     $modulname = 'Statistics - High chip';
+    $player_id = isset($_GET['pid'] ) ? (int) $_GET['pid'] : 0;
+    $subtask = isset($_GET['subtask'] ) ?  trim($_GET['subtask'] ) : "";
     require_once( __DIR__ . '/high_chip.statistics.php'); 
-    $content = list_statistic_high_chip();
+    $content = high_chip_tabs($player_id , $subtask);
      
 }elseif($task =="high_winner"){
     $modulname = 'Statistics - High winner';

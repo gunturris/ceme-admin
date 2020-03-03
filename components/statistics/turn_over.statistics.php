@@ -121,10 +121,10 @@ function list_statistic_turn_over_player(){
 	while($ey = my_fetch_array($result)){ 
 
         $detail_button = '<a href="index.php?com='.$_GET['com'].'&task=turn_over&subtask=total&pid='.$ey['ID'].'">Turn Over</a>';
-         
+        $player_turn_over = player_turn_over( $ey['ID'] ); 
 		$row[] = array( 
-            'username' => position_text_align(  $ey['username'],   'left' ),
-            'winamount' => position_text_align( 'unknown',  'right') ,
+            'username' => position_text_align(  $ey['username'] ,   'left' ),
+            'turnover' => position_text_align(  $player_turn_over ,  'right') ,
             'turn over' => position_text_align( $detail_button ,  'right') ,
 		);
 	}
@@ -207,4 +207,12 @@ function turn_over_tabs($player_id , $page){
      
     return $view;
     
+}
+
+
+function player_turn_over($id){
+    $query = "SELECT 'unknown' AS dt_result ";
+    $result = my_query($query);
+    $row = my_fetch_array($result);
+    return $row['dt_result'];
 }

@@ -109,10 +109,10 @@ function list_statistic_high_winner_player(){
 	while($ey = my_fetch_array($result)){ 
 
         $detail_button = '<a href="index.php?com='.$_GET['com'].'&task=high_winner&subtask=total&pid='.$ey['ID'].'">High winner</a>';
-         
+        $player_winner = player_winner($ey['ID']); 
 		$row[] = array( 
             'username' => position_text_align(  $ey['username'],   'left' ),
-            'winamount' => position_text_align( 'unknown',  'right') ,
+            'winamount' => position_text_align( $player_winner ,  'right') ,
             'turn over' => position_text_align( $detail_button ,  'right') ,
 		);
 	}
@@ -143,7 +143,7 @@ function high_winner_tabs($player_id , $page){
     $view .= '<div class="col-md-6">';
     $view .= '<input type="hidden" name="com" value="'.$_GET['com'].'" />';
     $view .= '<input type="hidden" name="task" value="'.$_GET['task'].'" />';
-    $view .= '<input type="hidden" name="subtask" value="'.$_GET['subtask'].'" />';
+    $view .= '<input type="hidden" name="subtask" value="'.$page.'" />';
     if( isset($_GET['pid']) )
     $view .= '<input type="hidden" name="pid" value="'.$_GET['pid'].'" />';
     
@@ -196,4 +196,12 @@ function high_winner_tabs($player_id , $page){
      
     return $view;
     
+}
+
+
+function player_winner($id){
+    $query = "SELECT 'unknown' AS dt_result ";
+    $result = my_query($query);
+    $row = my_fetch_array($result);
+    return $row['dt_result'];
 }
