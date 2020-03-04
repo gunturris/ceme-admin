@@ -1,7 +1,7 @@
 <?php
 
 
-function list_statistic_high_chip(){
+function list_statistic_high_chip( $player = 0){
      
 	my_set_code_js('
 		function confirmDelete(id){
@@ -14,11 +14,15 @@ function list_statistic_high_chip(){
         ');	
     
 	$headers= array( 
-		'Date' => array( 'style' => 'width:30%;text-align:center;' ), 
-		'Bet amount' => array( 'style' => 'width:70%;text-align:right;' ),
+		'Date' => array( 'style' => 'width:25%;text-align:center;' ), 
+		'Win/Lose' => array( 'style' => 'width:15%;text-align:right;' ),
+		'Deposit' => array( 'style' => 'width:15%;text-align:right;' ),
+		'Withdraw' => array( 'style' => 'width:15%;text-align:right;' ),
+		'Bonus' => array( 'style' => 'width:15%;text-align:right;' ),
+		'Chips' => array( 'style' => 'width:15%;text-align:right;' ),
         
 	);
-
+    
     $query 	= "select DATE(ts) as ts, SUM(bet) as bet_total from player_history  group by DATE(ts) LIMIT 15";
     $result = my_query($query);
     
@@ -28,7 +32,11 @@ function list_statistic_high_chip(){
          
 		$row[] = array( 
             'tanggal' => position_text_align($ey['ts'], 'center' ),
-            'betamount' => position_text_align( rp_format($ey['bet_total']),  'right') 
+            'win_lose' => position_text_align( rp_format($ey['bet_total']),  'right') ,
+            'deposit' => position_text_align( rp_format($ey['bet_total']),  'right') ,
+            'withdraw' => position_text_align( rp_format($ey['bet_total']),  'right') ,
+            'bonus' => position_text_align( rp_format($ey['bet_total']),  'right') ,
+            'chip' => position_text_align( rp_format($ey['bet_total']),  'right') ,
 		);
 	}
 	

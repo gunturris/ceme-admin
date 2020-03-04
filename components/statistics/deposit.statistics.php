@@ -2,7 +2,7 @@
 
 
 
-function list_statistic_deposit(){
+function list_statistic_deposit( $player = 0){
     global $box;
 	my_set_code_js('
 		function confirmDelete(id){
@@ -16,11 +16,13 @@ function list_statistic_deposit(){
     
 	$headers= array( 
 		'Date' => array( 'style' => 'width:30%;text-align:center;' ), 
-		'Deposit' => array( 'style' => 'width:70%;text-align:right;' ),
+		'Amount' => array( 'style' => 'width:50%;text-align:right;' ),
+		'x Times' => array( 'style' => 'width:20%;text-align:center;' ),
          
 	);
  	
-	$query 	= "SELECT DATE(ts) as ts, count(*)as cnt FROM `debits` where approved='1' group by DATE(ts)  LIMIT 15";
+	$query 	= "SELECT DATE(ts) as ts, SUM(amount)  as total_amount ,count(*) as cnt FROM `debits` 
+                WHERE approved='1' group by DATE(ts)  LIMIT 15";
 
     $result = my_query($query);
 	
@@ -30,7 +32,8 @@ function list_statistic_deposit(){
          
 		$row[] = array( 
             'tanggal' => position_text_align( $ey['ts'], 'center' ),
-            'winamount' => position_text_align( rp_format($ey['cnt']) , 'center' ),  
+            'winamount' => position_text_align( rp_format($ey['total_amount ']) , 'right' ),  
+            'xtimes' => position_text_align(  $ey['cnt']  , 'center' ),  
 		);
 	}
 	
@@ -54,8 +57,9 @@ function list_statistic_deposit_player(){
     
 	$headers= array( 
 		'Username' => array( 'style' => 'width:30%;text-align:center;' ), 
-		'Deposit' => array( 'style' => 'width:50%;text-align:right;' ),
-		'Action' => array( 'style' => 'width:20%;text-align:right;' ),
+		'Deposit' => array( 'style' => 'width:40%;text-align:right;' ),
+		'x Times' => array( 'style' => 'width:20%;text-align:center;' ),
+		' ' => array( 'style' => 'width:10%;text-align:center;' ),
         
 	);
 
@@ -110,8 +114,9 @@ function list_statistic_deposit_player(){
         $player_deposit = player_deposit($ey['ID']);
 		$row[] = array( 
             'username' => position_text_align(  $ey['username'],   'left' ),
-            'winamount' => position_text_align(  $player_deposit ,  'right') ,
-            'turn over' => position_text_align( $detail_button ,  'right') ,
+            'winamount' => position_text_align(  $player_deposit['amount_total'] ,  'right') ,
+            'xtime' => position_text_align( $player_deposit['count_trx']  ,  'right') ,
+            'detail' => position_text_align( $detail_button ,  'right') ,
 		);
 	}
 	
@@ -197,8 +202,8 @@ function deposit_tabs($player_id , $page){
 
 
 function player_deposit($id){
-    $query = "SELECT 'unknown' AS dt_result ";
+    $query = "SELECT COUNT(tranId) AS count_trx , SUM(amount) AS total_amount FROM debits WHERE playerId = '{$id}'  ";
     $result = my_query($query);
     $row = my_fetch_array($result);
-    return $row['dt_result'];
+    return $row;
 }

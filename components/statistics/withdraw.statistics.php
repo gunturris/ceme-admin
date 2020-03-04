@@ -1,7 +1,7 @@
 <?php
 
 
-function list_statistic_withdraw(){
+function list_statistic_withdraw( $player = 0){
     global $box;
 	my_set_code_js('
 		function confirmDelete(id){
@@ -15,13 +15,14 @@ function list_statistic_withdraw(){
     
 	$headers= array( 
 		'Date' => array( 'style' => 'width:30%;text-align:center;' ), 
-		'Withdraw' => array( 'style' => 'width:70%;text-align:right;' ),
+		'Withdraw' => array( 'style' => 'width:50%;text-align:right;' ),
+		'x Times' => array( 'style' => 'width:20%;text-align:center;' ),
          
 	);
 
 	
 	
-	$query 	= "SELECT DATE(ts) as ts, count(*)as cnt FROM `credits` where valid='1' group by DATE(ts) LIMIT 15";
+	$query 	= "SELECT DATE(ts) as ts, count(*) as cnt , SUM(amount) as total_amount FROM `credits` where valid='1' group by DATE(ts) LIMIT 15";
 
     $result = my_query($query);
 	
@@ -30,15 +31,16 @@ function list_statistic_withdraw(){
 
          
 		$row[] = array( 
-            'tanggal' => position_text_align( $ey['ts'], 'center' ),
-            'winamount' => position_text_align( rp_format($ey['cnt']), 'right' ),  
+            'tanggal'   => position_text_align( $ey['ts'], 'center' ),
+            'winamount' => position_text_align( rp_format($ey['total_amount']), 'right' ),  
+            'xtime'     => position_text_align(  $ey['cnt'] , 'center' ),  
 		);
 	}
 	
 	$datas = table_rows($row);
     
-	$navigasi =statistic_header_box();
-	$box = header_box( 'Withdraw sumary' , $navigasi ); 
+	//$navigasi =statistic_header_box();
+	//$box = header_box( 'Withdraw sumary' , $navigasi ); 
 	return table_builder($headers , $datas , 9, false   ); 
 }
 
@@ -57,8 +59,9 @@ function list_statistic_withdraw_player(){
     
 	$headers= array( 
 		'Username' => array( 'style' => 'width:30%;text-align:center;' ), 
-		'Withdraw' => array( 'style' => 'width:50%;text-align:right;' ),
-		'Action' => array( 'style' => 'width:20%;text-align:right;' ),
+		'Withdraw' => array( 'style' => 'width:40%;text-align:right;' ),
+		'x Times' => array( 'style' => 'width:20%;text-align:right;' ),
+		' ' => array( 'style' => 'width:10%;text-align:right;' ),
         
 	);
 
@@ -113,8 +116,9 @@ function list_statistic_withdraw_player(){
         $player_withdraw = player_withdraw( $ey['ID'] ); 
 		$row[] = array( 
             'username' => position_text_align(  $ey['username'],   'left' ),
-            'withdraw' => position_text_align( 'unknown',  'right') ,
-            'turn over' => position_text_align( $detail_button ,  'right') ,
+            'withdraw' => position_text_align( rp_format( $player_withdraw['total_amount'] ) ,  'right') ,
+            'xtime' => position_text_align( $player_withdraw['count_trx'] ,  'center') ,
+            'aksi' => position_text_align( $detail_button ,  'right') ,
 		);
 	}
 	
@@ -199,8 +203,8 @@ function withdraw_tabs($player_id , $page){
 }
 
 function player_withdraw($id){
-    $query = "SELECT 'unknown' AS dt_result ";
+    $query = "SELECT COUNT(*) AS count_trx , SUM(amount) AS total_amount FROM debits WHERE playerId = '{$id}'  ";
     $result = my_query($query);
     $row = my_fetch_array($result);
-    return $row['dt_result'];
+    return $row;
 }
