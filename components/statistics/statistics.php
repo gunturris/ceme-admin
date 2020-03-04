@@ -16,6 +16,15 @@ if($task == "deposit"){
     $subtask = isset($_GET['subtask'] ) ?  trim($_GET['subtask'] ) : "";
     require_once( __DIR__ . '/deposit.statistics.php');
     $content =  deposit_tabs( $player_id , $subtask ) ;
+
+}elseif($task =="withdraw"){ 
+    $modulname = 'Statistics - Withdraw'; 
+    $player_id = isset($_GET['pid'] ) ? (int) $_GET['pid'] : 0;
+    $subtask = isset($_GET['subtask'] ) ?  trim($_GET['subtask'] ) : "";
+    require_once( __DIR__ . '/withdraw.statistics.php');
+    $content =  withdraw_tabs( $player_id , $subtask ); 
+ 
+    
     
 }elseif($task =="turn_over"){  
     $modulname = 'Statistics - Turn over';
@@ -45,20 +54,21 @@ if($task == "deposit"){
     require_once( __DIR__ . '/high_winner.statistics.php');
     $content =  high_winner_tabs( $player_id , $subtask ); 
     
+    
 }elseif($task =="buyin_megajackpot"){ 
     $modulname = 'Statistics - Buy in mega jackpot';
+    $player_id = isset($_GET['pid'] ) ? (int) $_GET['pid'] : 0;
+    $subtask = isset($_GET['subtask'] ) ?  trim($_GET['subtask'] ) : "";
     require_once( __DIR__ . '/buyin_megajackpot.statistics.php');
-    $content =  list_buyin_megajackpot() ; 
+    $content =  buyin_megajackpot_tabs($player_id , $subtask) ; 
     
 }elseif($task =="payout_megajackpot"){ 
     $modulname = 'Statistics - Payout mega jackpot';
+    $player_id = isset($_GET['pid'] ) ? (int) $_GET['pid'] : 0;
+    $subtask = isset($_GET['subtask'] ) ?  trim($_GET['subtask'] ) : "";
     require_once( __DIR__ . '/payout_megajackpot.statistics.php');
-    $content =  list_payout_megajackpot() ; 
+    $content =  payout_megajackpot_tabs( $player_id , $subtask ) ; 
      
-}elseif($task =="withdraw"){ 
-    $modulname = 'Statistics - Withdraw';
-    require_once( __DIR__ . '/withdraw.statistics.php');
-    $content =  list_statistic_withdraw() ; 
 
 }elseif($task =="player_last_login"){ 
     $modulname = 'Statistics - Member login';
