@@ -206,8 +206,8 @@ function buyin_megajackpot_tabs($player_id , $page){
 function player_buyin($id){
     $player = my_get_data_by_id('players' , 'ID' , $id);
     $query = "select DATE(ts) as ts, SUM(jackpotBuy) as jackpotBuy , COUNT(jackpotBuy) AS jackpot_cnt 
-        from player_history WHERE player = '{$player['username']}'  group by DATE(ts)  ";
+        from player_history WHERE player = '{$player['username']}' AND jackpotBuy > 0 group by DATE(ts)  ";
     $result = my_query($query);
     $row = my_fetch_array($result);
-    return $row['dt_result'];
+    return $row ;
 }
