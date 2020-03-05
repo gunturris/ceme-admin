@@ -14,14 +14,15 @@ function list_statistic_payout_megajackpot( $player = 0){
     
 	$headers= array( 
 		'Date' => array( 'style' => 'width:30%;text-align:center;' ), 
-		'Payout Jackpot' => array( 'style' => 'width:70%;text-align:right;' ),
+		'Payout Jackpot' => array( 'style' => 'width:50%;text-align:right;' ),
+		'x Times' => array( 'style' => 'width:20%;text-align:right;' ),
          
 	);
 
 	
 	  
 $query = "
-select DATE(ts) as ts, SUM(playMoneyChips) as playMoneyChips from player_history group by DATE(ts) order by ts desc";
+select DATE(ts) as ts, SUM(playMoneyChips) as playMoneyChips , COUNT(playMoneyChips) AS playMoneyChipsCnt from player_history group by DATE(ts) order by ts desc";
     $result = my_query($query);
 	
 	$row = array();
@@ -31,6 +32,7 @@ select DATE(ts) as ts, SUM(playMoneyChips) as playMoneyChips from player_history
 		$row[] = array( 
             'tanggal' => position_text_align( $ey['ts'], 'center' ),
             'payout' => position_text_align( rp_format($ey['playMoneyChips']) , 'center' ),  
+            'xtime' => position_text_align(  $ey['playMoneyChipsCnt']  , 'center' ),  
 		);
 	}
 	
@@ -55,7 +57,8 @@ function list_statistic_payout_megajackpot_player(){
 	$headers= array( 
 		'Username' => array( 'style' => 'width:30%;text-align:center;' ), 
 		'Payout' => array( 'style' => 'width:50%;text-align:right;' ),
-		'Action' => array( 'style' => 'width:20%;text-align:right;' ),
+		'x Times' => array( 'style' => 'width:10%;text-align:right;' ),
+		'Action' => array( 'style' => 'width:10%;text-align:right;' ),
         
 	);
 
@@ -110,8 +113,9 @@ function list_statistic_payout_megajackpot_player(){
         $player_payout = player_payout($ey['ID']);
 		$row[] = array( 
             'username' => position_text_align(  $ey['username'],   'left' ),
-            'winamount' => position_text_align( $player_payout ,  'right') ,
-            'payout' => position_text_align( $detail_button ,  'right') ,
+            'payout' => position_text_align( rp_format( $player_payout['playMoneyChips'] ) ,  'right') ,
+            'xtime' => position_text_align( $player_payout['playMoneyChipsCnt'] ,  'right') ,
+            'action' => position_text_align( $detail_button ,  'right') ,
 		);
 	}
 	
@@ -197,8 +201,12 @@ function payout_megajackpot_tabs($player_id , $page){
 
 
 function player_payout($id){
-    $query = "SELECT 'unknown' AS dt_result ";
+    $player = my_get_data_by_id('players' , 'ID' , $id);
+    $query = "select DATE(ts) as ts, 
+            SUM(playMoneyChips) as playMoneyChips , 
+            COUNT(playMoneyChips) AS playMoneyChipsCnt 
+            from player_history WHERE player = '{$player['username']}' group by DATE(ts)";
     $result = my_query($query);
     $row = my_fetch_array($result);
-    return $row['dt_result'];
+    return $row;
 }

@@ -14,14 +14,15 @@ function list_statistic_buyin_megajackpot($player = 0){
     
 	$headers= array( 
 		'Date' => array( 'style' => 'width:30%;text-align:center;' ), 
-		'Buy-in Jackpot' => array( 'style' => 'width:70%;text-align:right;' ),
+		'Buy-in Jackpot' => array( 'style' => 'width:50%;text-align:right;' ),
+		'x Times' => array( 'style' => 'width:20%;text-align:center;' ),
          
 	);
 
 	
 	 
 	$query 	= "
-select DATE(ts) as ts, SUM(jackpotBuy) as jackpotBuy from player_history group by DATE(ts) 
+select DATE(ts) as ts, SUM(jackpotBuy) as jackpotBuy , COUNT(jackpotBuy) AS jackpot_cnt from player_history group by DATE(ts) 
 order by jackpotBuy DESC  LIMIT 15";
 
     $result = my_query($query);
@@ -32,7 +33,8 @@ order by jackpotBuy DESC  LIMIT 15";
          
 		$row[] = array( 
             'tanggal' => position_text_align( $ey['ts'], 'center' ),
-            'winamount' => position_text_align( rp_format($ey['jackpotBuy']) , 'center' ),  
+            'winamount' => position_text_align( rp_format($ey['jackpotBuy']) , 'right' ),  
+            'xtime' => position_text_align(   $ey['jackpot_cnt']  , 'center' ),  
 		);
 	}
 	
@@ -57,8 +59,9 @@ function list_statistic_buyin_megajackpot_player(){
     
 	$headers= array( 
 		'Username' => array( 'style' => 'width:30%;text-align:center;' ), 
-		'Buy-in' => array( 'style' => 'width:50%;text-align:right;' ),
-		'Action' => array( 'style' => 'width:20%;text-align:right;' ),
+		'Amount' => array( 'style' => 'width:50%;text-align:right;' ),
+		'x Times' => array( 'style' => 'width:10%;text-align:right;' ),
+		'Action' => array( 'style' => 'width:10%;text-align:right;' ),
         
 	);
 
@@ -113,7 +116,8 @@ function list_statistic_buyin_megajackpot_player(){
         $player_buyin = player_buyin( $ey['ID'] ); 
 		$row[] = array( 
             'username' => position_text_align(  $ey['username'] ,   'left' ),
-            'buyin' => position_text_align(  $player_buyin ,  'right') ,
+            'amount' => position_text_align(  rp_format($player_buyin['jackpotBuy']) ,  'right') ,
+            'xtime' => position_text_align(  $player_buyin['jackpot_cnt'] ,  'right') ,
             'info' => position_text_align( $detail_button ,  'right') ,
 		);
 	}
@@ -200,7 +204,9 @@ function buyin_megajackpot_tabs($player_id , $page){
 
 
 function player_buyin($id){
-    $query = "SELECT 'unknown' AS dt_result ";
+    $player = my_get_data_by_id('players' , 'ID' , $id);
+    $query = "select DATE(ts) as ts, SUM(jackpotBuy) as jackpotBuy , COUNT(jackpotBuy) AS jackpot_cnt 
+        from player_history WHERE player = '{$player['username']}'  group by DATE(ts)  ";
     $result = my_query($query);
     $row = my_fetch_array($result);
     return $row['dt_result'];
