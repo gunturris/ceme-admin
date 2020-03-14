@@ -1,6 +1,7 @@
 <?php
 
-function list_acounting_free_jackpot(){
+
+function list_acounting_bonus(){
     
 	my_set_code_js('
 		function confirmDelete(id){
@@ -14,10 +15,9 @@ function list_acounting_free_jackpot(){
     
 	$headers= array( 
 		'Date' => array( 'style' => 'width:20%;text-align:center;' ), 
-		'Table chip' => array( 'style' => 'width:20%;text-align:center;' ), 
-		'Payout' => array( 'style' => 'width:20%;text-align:center;' ),
-		'Added (+)' => array( 'style' => 'width:20%;text-align:center;' ),
-		'Minus (-)' => array( 'style' => 'width:20%;text-align:center;' )
+		'Tournament' => array( 'style' => 'width:30%;text-align:center;' ), 
+		'Lucky wheel' => array( 'style' => 'width:25%;text-align:center;' ),
+		'Random bonus' => array( 'style' => 'width:25%;text-align:center;' ), 
         
 	);
     
@@ -29,16 +29,14 @@ function list_acounting_free_jackpot(){
  
 		$row[] = array( 
             'date'    => position_text_align( 0, 'center' ),
-            'deposit'    => position_text_align(0, 'center' ),
-            'withdraw'       => position_text_align(0, 'center' ),
-            'rake'      => position_text_align( $ey['amount'] , 'left' ),
-            'chip' => position_text_align( rp_format($ey['amount']),  'right'),
+            'tournament'    => position_text_align(0, 'center' ),
+            'lwheel'       => position_text_align(0, 'center' ), 
+            'random'       => position_text_align(0, 'center' ), 
             
 		);
 	}
 	
 	$datas = table_rows($row);
     
-	return table_builder($headers , $datas , 9, false   );  
-    
+	return table_builder($headers , $datas , 9, false   ); 
 }

@@ -150,22 +150,22 @@ font-size: 16px;">  &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">
                         <a  href="index.html"><i class="fa fa-book fa-2x"></i> Accounting<span class="fa arrow"></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Game</a>
+                                <a href="index.php?com=accounting_game">Game</a>
                             </li>
                             <li>
-                                <a href="#">Free jackpot</a>
+                                <a href="index.php?com=accounting_free_jackpot">Free jackpot</a>
                             </li> 
                             <li>
-                                <a href="#">Mega jackpot</a>
+                                <a href="index.php?com=accounting_mega_jackpot">Mega jackpot</a>
                             </li>
                             <li>
-                                <a href="#">Bonus</a>
+                                <a href="index.php?com=accounting_bonus">Bonus</a>
                             </li>
                             <li>
-                                <a href="#">Referal</a>
+                                <a href="index.php?com=accounting_referal">Referal</a>
                             </li> 
                             <li>
-                                <a href="#">Bot</a>
+                                <a href="index.php?com=accounting_bot">Bot</a>
                             </li>
                         </ul>
                     </li>	   

@@ -1,6 +1,6 @@
 <?php
 
-function list_acounting_free_jackpot(){
+function list_acounting_mega_jackpot(){
     
 	my_set_code_js('
 		function confirmDelete(id){

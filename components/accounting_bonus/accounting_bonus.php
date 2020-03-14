@@ -1,12 +1,12 @@
 <?php
 my_component_load('__jsload' , false);
 my_component_load('__paging' , false);  
-my_component_load('accounting_free_jackpot' );
+my_component_load('accounting_bonus' );
  
 
 $task = isset($_GET['task']) ? $_GET['task'] : ''; 
 $id = isset( $_GET['id'] ) ? $_GET['id']:  0;
-$modulname = 'Accounting - Free Jackpot';
+$modulname = 'Accounting - Games';
 
 if($_SERVER['REQUEST_METHOD'] == "POST" ):
  	switch($task){
@@ -30,7 +30,7 @@ else:
 	}else{
 		 
 		load_facebox_script();
-		$content =  list_acounting_free_jackpot() ; 
+		$content =  list_acounting_bonus() ; 
 	}
 endif; 
 generate_my_web($content, $modulname ); 
